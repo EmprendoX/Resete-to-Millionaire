@@ -1,0 +1,140 @@
+SUBLIMINALX™ — RULES (Desarrollo, Diseño, Ética y Operación)
+🔹 1. PROPÓSITO CENTRAL
+MindFlash™ existe para reprogramar la mente humana mediante estímulos conscientes y subliminales voluntarios, generando bienestar, enfoque y expansión personal sin manipulación, distracción ni interferencia.
+Principio rector: Todo estímulo debe ser elegido, comprendido y aceptado por el usuario.
+MindFlash no manipula — facilita el despertar de patrones positivos autoelegidos.
+🔹 2. REGLAS DE DESARROLLO (CODING RULES)
+2.1 Estructura general
+Framework base: React + Tailwind + Electron + Supabase.
+Estilo: Minimalista, elegante, sin ruido visual.
+Modo por defecto: Visible, no subliminal, hasta que el usuario consienta.
+Cada feature debe ser independiente y modular:
+AffirmationDisplay.jsx → muestra las frases.
+SettingsPanel.jsx → controla velocidad, opacidad, color.
+ListManager.jsx → administra listas (globales y personales).
+ConsentModal.jsx → consentimiento y edad.
+PaymentStripe.jsx → integración de pagos.
+supabaseClient.js → conexión.
+main.js (Electron) → overlay global.
+2.2 Principios de código
+Ninguna función debe exceder 50 líneas.
+Cada componente React debe tener su propio useEffect aislado.
+No se usa ninguna librería innecesaria (evitar bloat).
+Todos los textos configurables deben venir de JSON (soporte multi-idioma).
+Log visual de estado (console.log) debe eliminarse en versión productiva.
+Modo desarrollador y modo producción separados por env.
+En Electron, habilitar:
+win.setIgnoreMouseEvents(true)
+win.setAlwaysOnTop(true, "screen-saver");
+para garantizar overlay sin interferir con clics.
+2.3 Seguridad técnica
+Las afirmaciones del usuario se almacenan cifradas en tránsito (HTTPS + Supabase SSL).
+No guardar contraseñas: usar OAuth de Google o email magic link.
+Cada sesión debe validar consentimiento antes de activar subliminal.
+Desactivar subliminal si consent no existe en DB.
+Registro local en localStorage de ajustes actuales y sesión activa.
+🔹 3. REGLAS DE EXPERIENCIA (UX/UI)
+3.1 Diseño
+Fondo negro o translúcido.
+Tipografía: Inter o Nunito Sans, grande, suave, legible.
+El texto nunca debe distraer ni “saltar”; debe fundirse con la visión periférica.
+Animaciones mínimas (transition-opacity, fade in/out).
+Controles discretos: sliders, toggles, color picker, botones redondeados.
+No más de tres colores en la interfaz.
+3.2 Interacción
+Siempre permitir detener con un clic o tecla (ESC).
+Confirmación visual del estado:
+🔵 Visible
+🟣 Subliminal (consentido)
+Panel lateral o flotante con acceso a listas.
+Guardar ajustes automáticamente al modificarse.
+Implementar modo “workspace limpio”: panel oculto, sólo overlay activo.
+🔹 4. REGLAS DE CONTENIDO
+4.1 Afirmaciones globales
+Deben estar escritas en lenguaje positivo, directo y simple.
+No incluir negaciones (“no”, “nunca”) ni condicionamientos negativos.
+Ejemplo:
+✅ “Soy merecedor de abundancia.”
+❌ “No tengo escasez.”
+4.2 Categorización
+Categoría	Ejemplo de intención
+Abundance	Dinero, éxito, oportunidades
+Health	Cuerpo sano, energía, descanso
+Focus	Enfoque, disciplina, claridad
+Confidence	Amor propio, poder personal
+Calm	Paz interior, serenidad
+Motivation	Acción, energía, perseverancia
+Learning	Retención, comprensión, agilidad mental
+Custom	Creadas por el usuario
+4.3 Personalización
+El usuario puede crear sus listas, nombrarlas y activarlas.
+Deben guardarse automáticamente en Supabase y localStorage.
+Las listas del sistema no deben modificarse desde el cliente.
+🔹 5. REGLAS DE ÉTICA Y LEGALIDAD
+5.1 Transparencia
+El usuario siempre debe saber si el modo subliminal está activo.
+Mostrar banner inicial con modo actual (Visible/Subliminal).
+Incluir ConsentModal.jsx con texto legal completo.
+5.2 Consentimiento
+Requiere:
+Confirmación de lectura del texto de consentimiento.
+Verificación de edad (18+).
+Registro en DB con fecha y versión del texto.
+Sin consentimiento → modo visible por defecto.
+Sin botón de “Desactivar”, el modo subliminal no puede iniciarse.
+5.3 Legal
+Mostrar en todo material:
+“MindFlash es una herramienta de bienestar y autosugestión. No sustituye terapia ni diagnóstico médico.”
+Registrar consentimiento (consents table).
+Cumplir RGPD y Ley Federal de Protección de Datos (MX / USA).
+🔹 6. REGLAS DE NEGOCIO
+6.1 Modelos de ingreso
+Plan Free → visibilidad limitada, 3 listas personales.
+Plan Premium → modo subliminal, audio, sincronización.
+Plan Lifetime → acceso total.
+Comisiones por afiliación (10–30%).
+6.2 Stripe
+Usar Checkout + Webhooks → plan_status.
+Guardar estado del plan en Supabase (users.plan).
+Cierre automático de sesión si plan expira.
+6.3 Versionado
+v1.0 → MVP Desktop + Subliminal visible.
+v1.1 → Supabase + Stripe + listas.
+v1.2 → Android overlay.
+v2.0 → Audio IA + Marketplace de listas.
+🔹 7. REGLAS DE MARKETING Y POSICIONAMIENTO
+7.1 Mensaje central
+“El poder de la mente está en la repetición. MindFlash te lo recuerda, sin que te distraigas.”
+7.2 Diferenciadores
+Reprogramación real subliminal.
+Overlay total mientras trabajas.
+Listas profesionales + personalizables.
+Privacidad total, sin rastreo ni anuncios.
+7.3 Estrategia
+Freemium → experiencia visible gratuita.
+Upsell emocional → desbloquea modo subliminal + audio.
+Comunidad → usuarios comparten listas personalizadas.
+Marketing ético → sin promesas mágicas ni manipulación.
+🔹 8. REGLAS DE ESCALABILIDAD
+La app debe compilarse fácilmente en:
+npm run build:electron
+npm run build:android
+Multi-idioma: Español, Inglés (por JSON).
+Multi-plataforma (Mac, Windows, Android).
+Código modular, repositorio limpio.
+Preparado para integrar Analytics en Supabase o Plausible.
+🔹 9. REGLAS DE LANZAMIENTO
+Beta privada: 10 usuarios de confianza (7 días).
+Lanzamiento público:
+Web + Desktop Free.
+Premium en Stripe.
+Campañas iniciales:
+YouTube Ads (explicativo).
+Afiliados (coaches y terapeutas).
+Página: mindflash.app
+🔹 10. REGLAS PERSONALES DE EXCELENCIA
+Ningún elemento visual debe parecer “hipnótico”.
+Ninguna frase será mostrada sin consentimiento.
+Ningún usuario será impactado sin opción de control.
+Ninguna versión se lanzará sin validación ética.
+Todo el sistema debe inspirar bienestar, no dependencia.

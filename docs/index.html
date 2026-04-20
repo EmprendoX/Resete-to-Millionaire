@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset to Millionaire — Afirmaciones y mindset</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #0a0c10;
+      color: #f2efe6;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(ellipse 100% 80% at 50% 0%, #141c24 0%, #0a0c10 55%);
+    }
+    
+    .logo {
+      width: 144px;
+      height: 144px;
+      margin-bottom: 30px;
+    }
+    
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    h1 {
+      font-size: 3.2em;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', 'DM Sans', sans-serif;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      color: #f2efe6;
+    }
+
+    h1 .gold {
+      color: #e8c547;
+    }
+    
+    .subtitle {
+      font-size: 1.25em;
+      color: rgba(242, 239, 230, 0.55);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+    
+    .download-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    
+    .btn {
+      padding: 16px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(180deg, #e8c547 0%, #b8922a 100%);
+      color: #0c0a06;
+      box-shadow: 0 4px 20px rgba(201, 162, 39, 0.35);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201, 162, 39, 0.45);
+    }
+    
+    .btn-secondary {
+      background: #161d27;
+      color: #f2efe6;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    
+    .btn-secondary:hover {
+      background: #1c2533;
+      border-color: rgba(232, 197, 71, 0.4);
+    }
+    
+    .features {
+      padding: 80px 20px;
+      background: #0f1318;
+    }
+    
+    .features h2 {
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 60px;
+      color: #f2efe6;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background: #161d27;
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(232, 197, 71, 0.35);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+    
+    .feature-icon {
+      display: none;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.35em;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -0.02em;
+      margin-bottom: 15px;
+      color: #e8c547;
+    }
+    
+    .feature-card p {
+      color: rgba(242, 239, 230, 0.62);
+      line-height: 1.6;
+    }
+    
+    .cta-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(160deg, #1a1508 0%, #2d2410 40%, #1a1508 100%);
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .cta-section h2 {
+      font-size: 2.5em;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .cta-section p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: rgba(242, 239, 230, 0.85);
+    }
+
+    .cta-section .btn-secondary {
+      background: rgba(0, 0, 0, 0.35);
+      color: #f2efe6;
+      border-color: rgba(232, 197, 71, 0.45);
+    }
+
+    .cta-section .btn-secondary:hover {
+      background: rgba(0, 0, 0, 0.5);
+      border-color: rgba(232, 197, 71, 0.65);
+    }
+    
+    .footer {
+      padding: 40px 20px;
+      text-align: center;
+      background: #080a0e;
+      color: rgba(242, 239, 230, 0.45);
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      
+      .subtitle {
+        font-size: 1.2em;
+      }
+      
+      .download-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="logo">
+      <img src="assets/Logo_Resete_To_Millionaire.png" alt="Reset to Millionaire" width="240" height="240" decoding="async">
+    </div>
+    <h1>Reset to <span class="gold">Millionaire</span></h1>
+    <p class="subtitle">Afirmaciones y estímulos conscientes para reprogramar tu enfoque mientras trabajas.</p>
+    <div class="download-buttons">
+      <a href="https://github.com/EmprendoX/SubliminalX/releases/latest" class="btn btn-primary">
+        Descargar (última versión)
+      </a>
+      <a href="https://github.com/EmprendoX/SubliminalX/releases" class="btn btn-secondary">
+        Ver todos los releases
+      </a>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2>¿Por qué Reset to Millionaire?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"></div>
+          <h3>100% Transparente</h3>
+          <p>El overlay es completamente invisible y no interfiere con tu trabajo. Los flashes aparecen de manera subliminal sin distraerte.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"></div>
+          <h3>Totalmente Personalizable</h3>
+          <p>Crea tus propias afirmaciones, ajusta la velocidad y duración de los flashes. Todo bajo tu control.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"></div>
+          <h3>Persistencia Automática</h3>
+          <p>Tus configuraciones se guardan automáticamente. No perderás tu progreso.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"></div>
+          <h3>Ligera y Rápida</h3>
+          <p>Consumo mínimo de recursos. Apenas usa 1% de memoria y CPU.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Comienza tu Transformación Hoy</h2>
+      <p>Descarga Reset to Millionaire y lleva tus afirmaciones al siguiente nivel.</p>
+      <div class="download-buttons">
+        <a href="https://github.com/EmprendoX/SubliminalX/releases/latest" class="btn btn-secondary">
+          Ir a la última versión
+        </a>
+        <a href="https://github.com/EmprendoX/SubliminalX/releases" class="btn btn-secondary">
+          Ver todos los releases
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Reset to Millionaire. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

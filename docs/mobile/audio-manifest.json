@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "tracks": [
+    {
+      "id": "abundance-en",
+      "name": "Abundance",
+      "category": "English · Abundance",
+      "language": "en",
+      "url": "./assets/audio/abundance_english.mp3"
+    },
+    {
+      "id": "abundance-es",
+      "name": "Abundancia",
+      "category": "Español · Abundancia",
+      "language": "es",
+      "url": "./assets/audio/abundance_espanol.mp3"
+    },
+    {
+      "id": "business-success",
+      "name": "Business Success",
+      "category": "English · Success",
+      "language": "en",
+      "url": "./assets/audio/business_success.mp3"
+    },
+    {
+      "id": "faith-trust",
+      "name": "Faith & Trust",
+      "category": "English · Faith",
+      "language": "en",
+      "url": "./assets/audio/faith_trust.mp3"
+    },
+    {
+      "id": "fe-confianza",
+      "name": "Fe y Confianza",
+      "category": "Español · Fe",
+      "language": "es",
+      "url": "./assets/audio/fe_confianza.mp3"
+    },
+    {
+      "id": "happiness-joy",
+      "name": "Happiness & Joy",
+      "category": "English · Happiness",
+      "language": "en",
+      "url": "./assets/audio/happiness_joy.mp3"
+    },
+    {
+      "id": "felicidad-alegria",
+      "name": "Felicidad y Alegría",
+      "category": "Español · Felicidad",
+      "language": "es",
+      "url": "./assets/audio/felicidad_alegria.mp3"
+    },
+    {
+      "id": "health-healing",
+      "name": "Health & Healing",
+      "category": "English · Health",
+      "language": "en",
+      "url": "./assets/audio/heald_healing.mp3"
+    },
+    {
+      "id": "salud-sanacion",
+      "name": "Salud y Sanación",
+      "category": "Español · Salud",
+      "language": "es",
+      "url": "./assets/audio/salud_sanacion.mp3"
+    },
+    {
+      "id": "self-esteem",
+      "name": "Self-Esteem",
+      "category": "English · Self-Esteem",
+      "language": "en",
+      "url": "./assets/audio/selfe_steem.mp3"
+    },
+    {
+      "id": "autoestima-amor-propio",
+      "name": "Autoestima y Amor Propio",
+      "category": "Español · Autoestima",
+      "language": "es",
+      "url": "./assets/audio/autoestima_amor_propio.mp3"
+    }
+  ]
+}

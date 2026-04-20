@@ -1,0 +1,98 @@
+[5 tools called]
+
+## Plan para finalizar SubliminalX
+
+### Problema actual
+- La app Electron que funciona es la simple (electron/main.js, control.html, overlay.html).
+- Hay una versión TypeScript (dist-electron/main.js) que no está conectada.
+- package.json apunta a dist-electron/main.js, pero el comando "dev" usa electron/main.js.
+
+---
+
+## Ruta: 5 pasos
+
+### FASE 1: Limpieza y estandarización (30 min)
+Objetivo: deja una sola versión funcionando.
+
+1. Mantener: `electron/main.js` (actual)
+2. Borrar: `electron/main.ts` y `electron/preload.ts` (y limpiar dist-electron)
+3. Mantener: `control.html` y `overlay.html`
+4. Actualizar: `package.json` para que apunte a `electron/main.js`
+
+---
+
+### FASE 2: Pulir el diseño del frontend (2-3 horas)
+Objetivo: diseño más consistente en ambas ventanas.
+
+#### Control Panel (`control.html`)
+- Actualizar gradientes y colores
+- Mejorar tipografía y espaciado
+- Ajustar sombras y animaciones
+- Asegurar responsividad
+
+#### Overlay (`overlay.html`)
+- Mejorar tipografía para legibilidad
+- Ajustar efectos de transición
+- Refinar sombras y contraste
+- Posicionamiento y centrado
+
+---
+
+### FASE 3: Mejorar funcionalidades (1-2 horas)
+Objetivo: UX más sólida.
+
+1. Persistencia: guardar config en JSON
+2. Shortcuts de teclado (ej. ⌘K para pausar)
+3. Validaciones: límites de velocidad y duración
+4. Feedback: notificaciones breves al guardar
+
+---
+
+### FASE 4: Testing y ajustes finales (1 hora)
+Objetivo: estabilidad y depuración.
+
+1. Probar en macOS y Windows
+2. Verificar overlay sobre distintas apps
+3. Validar almacenamiento de config
+4. Ajustar rendimiento si es necesario
+
+---
+
+### FASE 5: Documentación y build (30 min)
+Objetivo: facilitar uso y compilación.
+
+1. README claro
+2. Scripts de build
+3. Iconos y assets
+4. Changelog/versionado
+
+---
+
+## Archivos clave a tocar
+
+```
+electron/
+  └── main.js        ← Mantener (fuente de verdad)
+  
+control.html         ← Pulir CSS
+overlay.html         ← Pulir CSS + efectos
+
+package.json         ← Ajustar scripts
+README.md            ← Actualizar
+```
+
+---
+
+## Tareas inmediatas
+
+1. Usar solo `electron/main.js` como base
+2. Archivar `electron/main.ts` y `electron/preload.ts`
+3. Actualizar `package.json` para apuntar a `electron/main.js`
+4. Pulir CSS en `control.html` y `overlay.html`
+5. Añadir persistencia de configuración
+6. Probar y depurar en macOS/Windows
+7. Actualizar README y scripts de build
+
+---
+
+¿Continuamos con este plan? Empiezo por la FASE 1.

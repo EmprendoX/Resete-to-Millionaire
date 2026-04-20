@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="Reset to Millionaire — sesiones binaurales y audios de afirmaciones para tu mindset." />
+
+  <!-- iOS PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Reset to Millionaire" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png" />
+
+  <title>Reset to Millionaire</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Splash -->
+  <div class="splash" id="splash">
+    <img src="../assets/Logo_Resete_To_Millionaire.png" alt="Reset to Millionaire" />
+    <h1>Reset to <span>Millionaire</span></h1>
+  </div>
+
+  <!-- App shell -->
+  <div class="app" id="app" hidden>
+    <!-- ============ TOP BAR ============ -->
+    <header class="topbar">
+      <img class="topbar__logo" src="../assets/Logo_Resete_To_Millionaire.png" alt="" aria-hidden="true" />
+      <div class="topbar__titles">
+        <h1 class="topbar__title">Reset to <span>Millionaire</span></h1>
+        <p class="topbar__subtitle" data-i18n="app_subtitle">Audios y binaural para tu mindset</p>
+      </div>
+    </header>
+
+    <!-- ============ MAIN (tab views) ============ -->
+    <main class="main">
+
+      <!-- ========== BINAURAL TAB ========== -->
+      <section class="view view--binaural is-active" id="view-binaural" role="tabpanel" aria-labelledby="tab-binaural">
+        <div class="section-head">
+          <h2 data-i18n="binaural_title">Programas Binaurales</h2>
+          <p class="muted" data-i18n="binaural_sub">Usa audífonos estéreo para el efecto óptimo.</p>
+        </div>
+
+        <div class="card card--program">
+          <label class="field">
+            <span class="field__label" data-i18n="active_program">Programa activo</span>
+            <div class="select-wrap">
+              <select id="programSelect" class="select"></select>
+            </div>
+          </label>
+
+          <div class="program-info" id="programInfo">
+            <h3 class="program-info__name" id="programName">—</h3>
+            <p class="program-info__objective" id="programObjective"></p>
+            <div class="program-info__meta">
+              <span class="chip"><strong data-i18n="carrier">Carrier</strong>: <span id="programCarrier">—</span> Hz</span>
+              <span class="chip"><strong data-i18n="duration">Duración</strong>: <span id="programDuration">—</span></span>
+            </div>
+            <ul class="phases" id="programPhases"></ul>
+          </div>
+        </div>
+
+        <div class="card card--pure-freq">
+          <div class="card__head">
+            <h3 data-i18n="pure_freq_title">Frecuencias puras</h3>
+            <p class="muted" data-i18n="pure_freq_sub">Un tono binaural constante hasta que detengas.</p>
+          </div>
+          <div class="freq-grid" id="pureFreqGrid" role="group" aria-label="Frecuencias puras"></div>
+        </div>
+
+        <div class="card card--player">
+          <div class="player-status">
+            <span class="dot" id="binauralDot"></span>
+            <span id="binauralStatus" data-i18n="status_stopped">Detenido</span>
+          </div>
+
+          <div class="phase-current" id="phaseCurrent" hidden>
+            <div class="phase-current__label" data-i18n="current_phase">Fase actual</div>
+            <div class="phase-current__name" id="phaseCurrentName">—</div>
+            <div class="progress">
+              <div class="progress__bar" id="sessionProgress"></div>
+            </div>
+            <div class="phase-current__time">
+              <span id="sessionElapsed">00:00</span>
+              <span id="sessionRemaining">-22:00</span>
+            </div>
+          </div>
+
+          <label class="field">
+            <span class="field__label">
+              <span data-i18n="volume_label">Volumen</span>
+              <strong id="binauralVolumeValue">50%</strong>
+            </span>
+            <input type="range" id="binauralVolume" class="range" min="0" max="100" step="1" value="50" />
+          </label>
+
+          <div class="player-actions">
+            <button class="btn btn--primary btn--large" id="binauralPlay" type="button">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              <span data-i18n="play">Reproducir</span>
+            </button>
+            <button class="btn btn--ghost" id="binauralStop" type="button" disabled>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5" fill="currentColor"/></svg>
+              <span data-i18n="stop">Detener</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== AUDIOS TAB ========== -->
+      <section class="view view--audios" id="view-audios" role="tabpanel" aria-labelledby="tab-audios" hidden>
+        <div class="section-head">
+          <h2 data-i18n="audios_title">Audios de afirmaciones</h2>
+          <p class="muted" data-i18n="audios_sub">Elige una pista para comenzar.</p>
+        </div>
+
+        <ul class="track-list" id="trackList"></ul>
+      </section>
+
+      <!-- ========== SETTINGS TAB ========== -->
+      <section class="view view--settings" id="view-settings" role="tabpanel" aria-labelledby="tab-settings" hidden>
+        <div class="section-head">
+          <h2 data-i18n="settings_title">Ajustes</h2>
+        </div>
+
+        <div class="card">
+          <label class="field">
+            <span class="field__label" data-i18n="language">Idioma</span>
+            <div class="select-wrap">
+              <select id="languageSelect" class="select">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+          </label>
+
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-row__label" data-i18n="keep_awake">Mantener pantalla encendida</div>
+              <div class="muted small" data-i18n="keep_awake_desc">Evita que la pantalla se apague durante una sesión.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="wakeLockToggle" />
+              <span class="switch__track"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="about">
+            <img src="../assets/Logo_Resete_To_Millionaire.png" alt="" aria-hidden="true" />
+            <div>
+              <div class="about__name">Reset to Millionaire</div>
+              <div class="muted small" data-i18n="about_tagline">Audios y programas binaurales.</div>
+              <div class="muted small"><span data-i18n="version">Versión</span>: <span id="appVersion">0.3.0</span></div>
+            </div>
+          </div>
+          <p class="muted small" data-i18n="about_disclaimer">
+            Usa audífonos estéreo para percibir correctamente el efecto binaural. Esta aplicación no sustituye consejo médico profesional.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============ BOTTOM TABS ============ -->
+    <nav class="tabs" role="tablist" aria-label="Navegación principal">
+      <button class="tab is-active" id="tab-binaural" role="tab" aria-controls="view-binaural" aria-selected="true" data-view="binaural" type="button">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M3 12h2M7 7v10M11 4v16M15 8v8M19 11v2M21 12h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span data-i18n="tab_binaural">Binaural</span>
+      </button>
+      <button class="tab" id="tab-audios" role="tab" aria-controls="view-audios" aria-selected="false" data-view="audios" type="button">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2v-2zm16 0a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        </svg>
+        <span data-i18n="tab_audios">Audios</span>
+      </button>
+      <button class="tab" id="tab-settings" role="tab" aria-controls="view-settings" aria-selected="false" data-view="settings" type="button">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1A2 2 0 1 1 4.3 17l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 1 1 7 4.3l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1A2 2 0 1 1 19.7 7l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+        <span data-i18n="tab_settings">Ajustes</span>
+      </button>
+    </nav>
+
+    <!-- Persistent mini-player (overlay, visible across tabs) -->
+    <div class="mini-player" id="miniPlayer" hidden>
+      <div class="mini-player__top">
+        <div class="mini-player__title" id="miniTitle">—</div>
+        <button class="icon-btn" id="miniClose" type="button" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="mini-player__progress">
+        <input type="range" id="miniSeek" class="range range--seek" min="0" max="1000" value="0" step="1" />
+        <div class="mini-player__times">
+          <span id="miniElapsed">0:00</span>
+          <span id="miniDuration">0:00</span>
+        </div>
+      </div>
+
+      <div class="mini-player__controls">
+        <button class="icon-btn" id="miniLoop" type="button" aria-pressed="false" aria-label="Loop">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M17 17H7a3 3 0 0 1-3-3V9M7 7h10a3 3 0 0 1 3 3v5M14 4l3 3-3 3M10 20l-3-3 3-3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn btn--primary btn--round" id="miniPlay" type="button" aria-label="Reproducir">
+          <svg id="miniPlayIcon" viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        </button>
+        <button class="icon-btn" id="miniSpeed" type="button" aria-label="Velocidad">
+          <span id="miniSpeedLabel">1.0x</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "app_subtitle": "Audios and binaural for your mindset",
+
+  "tab_binaural": "Binaural",
+  "tab_audios": "Audios",
+  "tab_settings": "Settings",
+
+  "binaural_title": "Binaural Programs",
+  "binaural_sub": "Use stereo headphones for the optimal effect.",
+  "active_program": "Active program",
+  "pure_freq_title": "Pure frequencies",
+  "pure_freq_sub": "A constant binaural tone until you stop.",
+  "freq_delta": "Delta",
+  "freq_theta": "Theta",
+  "freq_alpha": "Alpha",
+  "freq_beta": "Beta",
+  "freq_gamma": "Gamma",
+  "carrier": "Carrier",
+  "duration": "Duration",
+  "current_phase": "Current phase",
+  "volume_label": "Volume",
+  "play": "Play",
+  "stop": "Stop",
+  "pause": "Pause",
+
+  "status_stopped": "Stopped",
+  "status_running": "In session",
+  "status_completed": "Session finished",
+
+  "session_stopped": "Session stopped",
+  "session_complete": "Session complete",
+  "no_program": "Select a program",
+  "error_audio": "Error starting audio",
+  "tap_to_play": "Tap again to play",
+
+  "audios_title": "Affirmation audios",
+  "audios_sub": "Choose a track to begin.",
+  "no_tracks": "No audios available",
+  "no_tracks_sub": "Make sure the MP3 files are present.",
+
+  "settings_title": "Settings",
+  "language": "Language",
+  "keep_awake": "Keep screen awake",
+  "keep_awake_desc": "Prevents the screen from turning off during a session.",
+  "wake_unavailable": "Wake Lock not available in this browser",
+
+  "about_tagline": "Audios and binaural programs.",
+  "about_disclaimer": "Use stereo headphones to correctly perceive the binaural effect. This app is not a substitute for professional medical advice.",
+  "version": "Version"
+}

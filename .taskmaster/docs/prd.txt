@@ -1,0 +1,155 @@
+Product Requirements Document (PRD v3.0)
+SUBLIMINALX™ — Reprograma tu mente mientras trabajas, estudias o navegas
+1. Visión General
+Propósito:
+Desarrollar una app multiplataforma que muestre afirmaciones subliminales o visibles sobre cualquier aplicación, ayudando al usuario a reprogramar su mente, reforzar creencias positivas y mejorar su estado mental mientras realiza otras tareas.
+Slogan:
+“Reprograma tu mente mientras trabajas. Elige tu enfoque. Crea tu realidad.”
+2. Plataformas y Alcance
+Plataforma	Nivel de capacidad	Descripción
+Web/PWA	Limitado	Pruebas y promoción (no puede sobreponerse a otras apps).
+Desktop (Electron)	Completo	Overlay real sobre cualquier aplicación. Versión Premium.
+Android (Nativa)	Completo	Overlay global mediante permiso SYSTEM_ALERT_WINDOW.
+iOS	Limitado	Sin overlay global; versión visible o audio subliminal.
+3. Objetivos del Producto
+Ofrecer un sistema subliminal ético y configurable.
+Permitir a los usuarios elegir entre múltiples listas temáticas (abundancia, salud, autoestima, disciplina, etc.) o crear sus propias listas.
+Permitir la visualización subliminal real (10–200 ms) o visible.
+Sincronizar listas y configuraciones mediante Supabase.
+Integrar suscripciones y pagos por Stripe.
+Desplegar en escritorio, web y móvil.
+4. Funcionalidades Principales
+🧩 Core Features
+Overlay global subliminal (Desktop y Android)
+Texto aparece sobre cualquier aplicación.
+Transparente, no bloquea clics (clickThrough).
+Control total de opacidad, duración, velocidad.
+Listas temáticas predefinidas (globales)
+Abundance & Wealth
+Weight Loss & Body Confidence
+Focus & Discipline
+Self-Love & Confidence
+Calm & Mindfulness
+Energy & Motivation
+Sleep & Recovery
+Learning & Memory
+Listas personalizadas del usuario
+Crear, nombrar, editar, eliminar.
+Guardar en Supabase y sincronizar entre dispositivos.
+Importar/exportar en .json o .txt.
+Límite en plan Free (3 listas).
+Configuraciones avanzadas
+Velocidad (intervalo ms).
+Duración visible (flashTime).
+Opacidad y color del texto.
+Posición fija o aleatoria.
+Activar/desactivar modo subliminal.
+Modo mixto
+Mostrar frases aleatorias de varias listas seleccionadas.
+Modo audio (v2.1)
+Afirmaciones habladas mediante ElevenLabs o SpeechSynthesis API.
+Consentimiento informado obligatorio
+Modal inicial (aceptar uso subliminal, confirmar edad).
+Modo visible por defecto.
+Analítica personal
+Número de afirmaciones vistas por sesión/lista.
+Tiempo de uso diario/semanal.
+Registro de listas activas.
+Sincronización y seguridad
+Supabase Auth para usuarios.
+Guardado local + sincronización en la nube.
+Pagos y monetización (Stripe)
+Plan Free: 3 listas propias, modo visible.
+Plan Premium: ilimitadas, subliminal, audio, sincronización.
+Plan Lifetime: acceso completo de por vida.
+5. Arquitectura Técnica
+Componente	Tecnología	Descripción
+Frontend	React + Tailwind + Vite	Interfaz UI principal.
+Backend	Supabase	Auth, DB y storage.
+Desktop	Electron.js	Overlay global y app instalable (.exe, .dmg).
+Móvil Android	React Native / Kotlin	Overlay global (SYSTEM_ALERT_WINDOW).
+Pagos	Stripe	Checkout, Webhooks, planes.
+Audio IA	ElevenLabs API	Afirmaciones habladas.
+Hosting Web	Netlify / Vercel	Landing + versión demo.
+6. Estructura de Base de Datos (Supabase)
+users
+Campo	Tipo
+id	uuid
+email	text
+plan	text (free/premium/lifetime)
+created_at	timestamp
+affirmation_lists
+Campo	Tipo	Descripción
+id	uuid	Identificador único
+user_id	uuid	Propietario (null = global)
+name	text	Nombre de la lista
+category	text	Categoría
+is_global	boolean	True = lista del sistema
+created_at	timestamp	
+affirmations
+Campo	Tipo
+id	uuid
+list_id	uuid
+text	text
+created_at	timestamp
+settings
+Campo	Tipo	Descripción
+user_id	uuid	Usuario
+speed	int	Intervalo entre frases (ms)
+flash_time	int	Tiempo visible (ms)
+opacity	float	Transparencia (0–1)
+color	text	Color
+position_mode	text	Random o Fixed
+active_lists	array(uuid)	Listas activas
+is_subliminal	boolean	Modo subliminal activo
+consents
+Campo	Tipo	Descripción
+user_id	uuid	Usuario
+consent_text_version	text	Versión de texto aceptado
+accepted_at	timestamp	Fecha
+device_info	text	Info del dispositivo
+7. Interfaz y UX
+Inicio:
+CTA: “Reprograma tu mente ahora.”
+Acceso Free / Login / Comprar Premium.
+Dashboard:
+Botón iniciar / pausar.
+Control de velocidad, duración y opacidad.
+Indicador de modo activo (Visible / Subliminal).
+Biblioteca:
+“Listas Globales” y “Mis Listas”.
+Botón “+ Crear nueva lista”.
+Editor con campos de texto múltiples.
+Ajustes:
+Sliders, paleta de color, toggle modo subliminal.
+Analítica:
+Muestra progreso, tiempo, listas más usadas.
+Consentimiento:
+Modal con texto legal, verificación de edad y aceptación.
+8. Seguridad y Legalidad
+Modal de consentimiento obligatorio (explicación del modo subliminal).
+Registro de consentimiento en Supabase (consents).
+Aviso legal y términos en landing y dentro de la app.
+Botón “STOP” visible en todo momento.
+Flash mínimo: 10 ms.
+Protección de menores (edad mínima 18 años).
+9. Monetización
+Plan	Precio	Beneficios
+Free	$0	3 listas, modo visible
+Premium	$9.99/mes	Subliminal, ilimitadas, audio, nube
+Lifetime	$49	Acceso completo de por vida
+10. Roadmap de desarrollo
+Etapa	Entregable	Duración
+Fase 1	MVP Desktop (Electron)	1 semana
+Fase 2	Biblioteca de listas + personalizadas	+1 semana
+Fase 3	Supabase Auth + Stripe	+1 semana
+Fase 4	Versión Android Overlay	+2 semanas
+Fase 5	Audio + analítica avanzada	+2 semanas
+Fase 6	iOS visible/audio	+2 semanas
+Total Estimado:	8–10 semanas para producto completo	
+11. Diferenciadores Clave
+Efecto subliminal real (overlay de sistema).
+Biblioteca + listas personalizadas.
+Configuración avanzada (duración, opacidad, color).
+Sin necesidad de IA ni mantenimiento costoso.
+Escalable globalmente con bajo costo operativo.

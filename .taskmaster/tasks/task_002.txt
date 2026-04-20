@@ -1,0 +1,37 @@
+# Task ID: 2
+# Title: Pulir diseño frontend en control.html y overlay.html
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Mejorar el CSS y el diseño visual de las páginas control.html y overlay.html para lograr un aspecto profesional y moderno.
+# Details:
+1. Revisar el diseño actual de control.html y overlay.html para identificar áreas de mejora. 2. Implementar un nuevo esquema de colores y tipografía que se alineen con la identidad visual del proyecto. 3. Optimizar el uso de CSS, eliminando estilos redundantes y utilizando clases reutilizables. 4. Asegurarse de que el diseño sea responsivo y se vea bien en diferentes dispositivos. 5. Realizar pruebas de usabilidad para obtener retroalimentación sobre el nuevo diseño.
+
+# Test Strategy:
+1. Verificar que los cambios en el CSS se reflejen correctamente en ambas páginas. 2. Probar el diseño en diferentes navegadores y dispositivos para asegurar la compatibilidad. 3. Realizar pruebas de usabilidad con usuarios para evaluar la efectividad del nuevo diseño y hacer ajustes según sea necesario.
+
+# Subtasks:
+## 1. Revisar diseño actual de control.html y overlay.html [pending]
+### Dependencies: None
+### Description: Analizar el diseño actual para identificar áreas de mejora.
+### Details:
+Revisar el CSS y la estructura de ambas páginas para detectar inconsistencias y áreas que necesiten mejoras.
+
+## 2. Implementar nuevo esquema de colores y tipografía [pending]
+### Dependencies: 2.1
+### Description: Actualizar colores y tipografía para alinearse con la identidad visual del proyecto.
+### Details:
+Seleccionar una paleta de colores moderna y tipografías que mejoren la legibilidad y estética.
+
+## 3. Optimizar CSS y asegurar diseño responsivo [pending]
+### Dependencies: 2.2
+### Description: Eliminar estilos redundantes y asegurar que el diseño sea responsivo.
+### Details:
+Refactorizar el CSS para usar clases reutilizables y asegurar que el diseño se adapte a diferentes dispositivos.
+
+## 4. Realizar pruebas de usabilidad y ajustes finales [pending]
+### Dependencies: 2.3
+### Description: Obtener retroalimentación sobre el nuevo diseño y realizar ajustes necesarios.
+### Details:
+Realizar pruebas con usuarios para evaluar la efectividad del diseño y ajustar según sea necesario.
+

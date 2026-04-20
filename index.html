@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset to Millionaire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="app-header">
+        <h1>Reset to <span class="brand-accent">Millionaire</span></h1>
+        <p class="tagline">Afirmaciones positivas en modo visible o subliminal.</p>
+      </header>
+
+      <main class="layout">
+        <section class="panel display-panel">
+          <div class="display-card" id="display-card">
+            <p id="affirmation-text"></p>
+          </div>
+          <div class="status-row">
+            <span id="active-list-label"></span>
+            <button id="pause-button" class="primary-button">Pausar</button>
+          </div>
+        </section>
+
+        <section class="panel controls-panel">
+          <h2>Controles de reproducción</h2>
+          <label class="control">
+            <span>Cambiar frase cada <strong id="speed-value">8</strong> segundos</span>
+            <input type="range" id="speed-slider" min="3" max="30" value="8" />
+          </label>
+          <label class="control">
+            <span>Tiempo visible <strong id="duration-value">4</strong> segundos</span>
+            <input type="range" id="duration-slider" min="1" max="30" value="4" />
+          </label>
+          <label class="control">
+            <span>Opacidad <strong id="opacity-value">100%</strong></span>
+            <input type="range" id="opacity-slider" min="5" max="100" value="100" />
+          </label>
+
+          <label class="control">
+            <span>Lista activa</span>
+            <select id="list-select"></select>
+          </label>
+        </section>
+
+        <section class="panel lists-panel">
+          <h2>Listas personales</h2>
+          <div class="new-list">
+            <input type="text" id="new-list-name" placeholder="Nombre de la lista" />
+            <button id="create-list" class="secondary-button">Crear</button>
+          </div>
+          <div class="editor" id="list-editor" hidden>
+            <header>
+              <h3 id="editor-title"></h3>
+              <div class="editor-actions">
+                <button id="duplicate-list" class="secondary-button">Duplicar</button>
+                <button id="delete-list" class="danger-button">Eliminar</button>
+              </div>
+            </header>
+            <label>
+              <span>Frases (una por línea)</span>
+              <textarea id="list-content" rows="8"></textarea>
+            </label>
+            <button id="save-list" class="primary-button">Guardar cambios</button>
+          </div>
+          <p class="helper-text">
+            Las listas globales (Abundance, Focus, Health) están siempre disponibles.
+            Crea tus propias listas para personalizar la experiencia.
+          </p>
+        </section>
+
+        <section class="panel audio-panel">
+          <h2>Reproductor de audio</h2>
+          <label class="control">
+            <span>Audio activo</span>
+            <select id="audio-select"></select>
+          </label>
+          <div class="audio-controls">
+            <button id="audio-play-pause" class="primary-button">Reproducir</button>
+            <button id="audio-stop" class="secondary-button">Detener</button>
+          </div>
+          <label class="control">
+            <span>Velocidad de reproducción <strong id="audio-speed-value">1.0x</strong></span>
+            <input type="range" id="audio-speed-slider" min="0.5" max="2.0" step="0.1" value="1.0" />
+          </label>
+          <div class="audio-status" id="audio-status">
+            <span id="audio-status-text">Selecciona un audio para comenzar</span>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

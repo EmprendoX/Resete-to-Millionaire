@@ -1,0 +1,31 @@
+# Task ID: 4
+# Title: Pruebas y ajustes finales de la aplicación en macOS/Windows
+# Status: pending
+# Dependencies: 2, 3
+# Priority: medium
+# Description: Realizar pruebas exhaustivas de la aplicación en macOS y Windows, verificando el overlay sobre otras aplicaciones, así como validando el almacenamiento y el rendimiento.
+# Details:
+1. Probar la aplicación en entornos macOS y Windows para asegurar que todas las funcionalidades operan correctamente. 2. Verificar que el overlay se muestre correctamente sobre otras aplicaciones y que no interfiera con su funcionamiento. 3. Realizar pruebas de rendimiento para evaluar la velocidad de carga y la respuesta de la aplicación. 4. Validar que la persistencia de la configuración del usuario funcione correctamente, asegurando que los datos se guarden y recuperen sin errores. 5. Documentar cualquier problema encontrado y realizar ajustes necesarios en el código.
+
+# Test Strategy:
+1. Ejecutar la aplicación en ambos sistemas operativos y documentar cualquier error o comportamiento inesperado. 2. Probar el overlay en diferentes aplicaciones para asegurar su correcta visualización y funcionalidad. 3. Realizar pruebas de carga para medir el rendimiento y la respuesta de la aplicación bajo diferentes condiciones. 4. Verificar que la configuración del usuario se guarda y se carga correctamente tras reiniciar la aplicación. 5. Recoger feedback de usuarios sobre la experiencia general y realizar ajustes según sea necesario.
+
+# Subtasks:
+## 1. Pruebas de funcionalidad en macOS y Windows [pending]
+### Dependencies: None
+### Description: Realizar pruebas exhaustivas de todas las funcionalidades de la aplicación en macOS y Windows.
+### Details:
+Ejecutar la aplicación en ambos sistemas operativos, verificando que todas las funcionalidades operen correctamente. Documentar cualquier error encontrado.
+
+## 2. Verificación del overlay en aplicaciones específicas [pending]
+### Dependencies: 4.1
+### Description: Probar el overlay de la aplicación sobre Finder, Safari y VS Code en macOS y Windows.
+### Details:
+Asegurarse de que el overlay se muestre correctamente y no interfiera con el funcionamiento de las aplicaciones mencionadas. Documentar cualquier problema visual o funcional.
+
+## 3. Pruebas de rendimiento y persistencia de configuración [pending]
+### Dependencies: 4.1, 4.2
+### Description: Evaluar el rendimiento de la aplicación y validar la persistencia de la configuración del usuario.
+### Details:
+Realizar pruebas de carga para medir la velocidad de respuesta. Verificar que la configuración del usuario se guarde y recupere correctamente. Documentar cualquier problema de rendimiento o persistencia.
+

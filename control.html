@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset to Millionaire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="control.css">
+</head>
+<body>
+  <div class="container">
+    <header class="app-hero" role="banner">
+      <div class="app-hero-inner">
+        <span class="app-logo"><img src="assets/Logo_Resete_To_Millionaire.png" alt="Reset to Millionaire" width="112" height="112" decoding="async"></span>
+        <div class="app-hero-text">
+          <h1 class="app-title">Reset to <span class="accent">Millionaire</span></h1>
+          <p class="app-tagline">Afirmaciones y audio binaural para enfocar tu mindset.</p>
+        </div>
+      </div>
+    </header>
+    
+    <div class="status">
+      <strong>Estado:</strong> <span id="status">Cargando...</span>
+    </div>
+    
+    <div class="section">
+      <h2>Idioma / Language</h2>
+      <div class="control-group">
+        <label>Language / Idioma:</label>
+        <select id="languageSelector" onchange="changeLanguage(this.value)">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 id="affirmations_lists_title">Listas de Afirmaciones</h2>
+      <div class="control-group">
+        <label id="active_list_label">Lista Activa:</label>
+        <select id="listSelector" onchange="changeList(this.value)">
+          <!-- Se llena con JS -->
+        </select>
+      </div>
+      <div class="control-group">
+        <label id="create_new_list_label">Crear Nueva Lista:</label>
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="newListName" placeholder="" style="flex: 1;">
+          <button onclick="createList()" class="success" id="create_list_btn">Crear</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 id="speed_control_title">Control de Velocidad</h2>
+      
+      <div class="control-group">
+        <label id="flash_speed_label">Velocidad de Flash (segundos entre flashes):</label>
+        <div class="range-container">
+          <input type="range" id="speedSlider" min="1" max="15" step="0.5" value="2">
+          <span class="range-value" id="speedValue">2.0s</span>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label id="flash_duration_label">Duración del Flash (milisegundos):</label>
+        <div class="range-container">
+          <input type="range" id="durationSlider" min="5" max="500" step="5" value="80">
+          <span class="range-value" id="durationValue">80ms</span>
+        </div>
+      </div>
+      
+      <button onclick="updateSpeed()" class="success" id="save_config_btn">Guardar Configuración</button>
+    </div>
+    
+    <div class="section" id="binauralProgramSection">
+      <h2>Programas Binaurales</h2>
+      <p class="binaural-program-header">Selecciona una secuencia guiada para tus sesiones. Cada programa indica su objetivo, portadora y fases con las frecuencias recomendadas.</p>
+      <div class="control-group">
+        <label for="binauralProgramSelector">Programa activo:</label>
+        <select id="binauralProgramSelector"></select>
+      </div>
+      <div class="binaural-program-details" id="binauralProgramDetails" hidden>
+        <h3 id="binauralProgramName"></h3>
+        <p class="binaural-program-short-description" id="binauralProgramObjective"></p>
+        <div class="binaural-program-meta">
+          <span><strong>Carrier:</strong> <span id="binauralProgramCarrier"></span> Hz</span>
+          <span><strong>Duración total:</strong> <span id="binauralProgramDuration"></span></span>
+        </div>
+        <ul class="binaural-program-phases" id="binauralProgramPhases"></ul>
+      </div>
+      
+      <div class="control-group">
+        <label id="volume_label">Volumen: <span id="binauralVolumeValue">50</span>%</label>
+        <div class="range-container">
+          <input type="range" id="binauralVolumeSlider" min="0" max="100" step="1" value="50">
+          <span class="range-value" id="binauralVolumeDisplay">50%</span>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label id="status_label">Estado: <span id="binauralStatus">Detenido</span></label>
+        <button onclick="toggleBinaural()" class="success" id="binauralToggleBtn">Iniciar</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 id="binaural_stereo_title">Ondas Binaurales Estéreo</h2>
+      
+      <div class="control-group">
+        <label id="brain_state_label">Estados Cerebrales:</label>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
+          <button onclick="setBinauralStereoPreset('delta')" class="success" id="preset-delta" style="flex: 1; min-width: 140px;">
+            Delta (3Hz)<br><small style="font-size: 0.8em;">Sueño profundo</small>
+          </button>
+          <button onclick="setBinauralStereoPreset('theta')" class="success" id="preset-theta" style="flex: 1; min-width: 140px;">
+            Theta (6Hz)<br><small style="font-size: 0.8em;">Meditación</small>
+          </button>
+          <button onclick="setBinauralStereoPreset('alpha')" class="success" id="preset-alpha" style="flex: 1; min-width: 140px;">
+            Alpha (10Hz)<br><small style="font-size: 0.8em;">Creatividad</small>
+          </button>
+          <button onclick="setBinauralStereoPreset('beta')" class="success" id="preset-beta" style="flex: 1; min-width: 140px;">
+            Beta (20Hz)<br><small style="font-size: 0.8em;">Energía</small>
+          </button>
+          <button onclick="setBinauralStereoPreset('gamma')" class="success" id="preset-gamma" style="flex: 1; min-width: 140px;">
+            Gamma (40Hz)<br><small style="font-size: 0.8em;">Alta conciencia</small>
+          </button>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label id="stereo_volume_label">Volumen: <span id="binauralStereoVolumeValue">50</span>%</label>
+        <div class="range-container">
+          <input type="range" id="binauralStereoVolumeSlider" min="0" max="100" step="1" value="50">
+          <span class="range-value" id="binauralStereoVolumeDisplay">50%</span>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label id="stereo_status_label">Estado: <span id="binauralStereoStatus">Detenido</span></label>
+        <label id="stereo_preset_label" style="display: block; margin-top: 5px; font-size: 0.9em; color: #e8c547;">
+          Preset activo: <span id="binauralStereoActivePreset">Ninguno</span>
+        </label>
+        <button onclick="toggleBinauralStereo()" class="success" id="binauralStereoToggleBtn">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 id="affirmations_management_title">Gestión de Afirmaciones (Máximo 50)</h2>
+      
+      <div class="control-group">
+        <label id="new_affirmation_label">Nueva Afirmación:</label>
+        <textarea id="newAffirmation" rows="2" placeholder="Escribe tu afirmación aquí..."></textarea>
+        <button onclick="addAffirmation()" class="success" id="add_affirmation_btn">Agregar Afirmación</button>
+      </div>
+      
+      <div class="control-group">
+        <label id="current_affirmations_label">Afirmaciones Actuales (<span id="affirmationCount">0</span>/50):</label>
+        <div class="affirmations-list" id="affirmationsList">
+          <!-- Las afirmaciones se cargarán aquí -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 id="audio_player_title">Reproductor de Audio</h2>
+      <div class="control-group">
+        <label id="active_audio_label">Audio Activo:</label>
+        <select id="audioSelector" onchange="changeAudio(this.value)">
+          <!-- Se llenará con JS -->
+        </select>
+      </div>
+      <div class="control-group">
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <button onclick="toggleAudioPlayPause()" class="success" id="audio_play_pause_btn" style="flex: 1;">Reproducir</button>
+          <button onclick="stopAudio()" class="success" id="audio_stop_btn" style="flex: 1;">Detener</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <label id="audio_speed_label">Velocidad de Reproducción: <span id="audioSpeedValue">1.0x</span></label>
+        <div class="range-container">
+          <input type="range" id="audioSpeedSlider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateAudioSpeed(this.value)">
+          <span class="range-value" id="audioSpeedDisplay">1.0x</span>
+        </div>
+      </div>
+      <div class="status" id="audioStatus" style="margin-top: 10px;">
+        <span id="audioStatusText">Selecciona un audio para comenzar</span>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 id="controls_title">Controles</h2>
+      <button onclick="restartFlashing()" class="success" id="restart_flashing_btn">Reiniciar Flashing</button>
+      <button onclick="minimizeToTray()" class="success" id="minimize_tray_btn">Minimizar a Bandeja</button>
+      <button onclick="quitApp()" class="danger" id="close_app_btn">Cerrar Aplicación</button>
+    </div>
+  </div>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+    
+    let currentConfig = {};
+    let translations = {};
+    let currentLanguage = 'es';
+
+    // Metadata de programas binaurales
+    let binauralProgramsMetadata = [];
+    let binauralProgramSelectorInitialized = false;
+
+    window.addEventListener('binaural-programs-ready', (event) => {
+      binauralProgramsMetadata = Array.isArray(event.detail) ? event.detail : [];
+      renderBinauralProgramSelector();
+    });
+    
+    // Variables para el generador de audio binaural
+    let binauralEngine = null;
+    let binauralSessionState = {
+      active: false,
+      currentPhaseIndex: -1,
+      completed: false,
+      program: null,
+      volume: 0.5,
+      endReason: null
+    };
+    
+    // Variables para ondas binaurales estéreo (dual oscillator)
+    let binauralStereoContext = null;
+    let binauralStereoLeftOsc = null;
+    let binauralStereoRightOsc = null;
+    let binauralStereoLeftGain = null;
+    let binauralStereoRightGain = null;
+    let binauralStereoMerger = null;
+    let binauralStereoPlaying = false;
+    let binauralStereoActivePreset = null;
+    
+    const BINAURAL_STEREO_PRESETS = {
+      delta: { name: 'Delta', baseL: 100, baseR: 103, diff: 3, description: 'Sueño profundo, recuperación' },
+      theta: { name: 'Theta', baseL: 100, baseR: 106, diff: 6, description: 'Meditación profunda, visualización' },
+      alpha: { name: 'Alpha', baseL: 100, baseR: 110, diff: 10, description: 'Aprendizaje, creatividad' },
+      beta: { name: 'Beta', baseL: 100, baseR: 120, diff: 20, description: 'Energía, alerta' },
+      gamma: { name: 'Gamma', baseL: 100, baseR: 140, diff: 40, description: 'Alta conciencia, intuición' }
+    };
+    
+    // Función helper para traducciones
+    function t(key) {
+      return translations[key] || key;
+    }
+    
+    // Cargar traducciones
+    async function loadTranslations(lang) {
+      try {
+        translations = await ipcRenderer.invoke('get-translations', lang);
+        currentLanguage = lang;
+        applyTranslations();
+      } catch (error) {
+        console.error('Error loading translations:', error);
+      }
+    }
+    
+    // Aplicar traducciones a la interfaz
+    function applyTranslations() {
+      // Actualizar textos usando IDs directos
+      const elements = {
+        'speed_control': document.getElementById('speed_control_title'),
+        'flash_speed': document.getElementById('flash_speed_label'),
+        'flash_duration': document.getElementById('flash_duration_label'),
+        'save_config': document.getElementById('save_config_btn'),
+        'affirmations_management': document.getElementById('affirmations_management_title'),
+        'new_affirmation': document.getElementById('new_affirmation_label'),
+        'new_affirmation_placeholder': document.getElementById('newAffirmation'),
+        'add_affirmation': document.getElementById('add_affirmation_btn'),
+        'current_affirmations': document.getElementById('current_affirmations_label'),
+        'controls': document.getElementById('controls_title'),
+        'restart_flashing': document.getElementById('restart_flashing_btn'),
+        'minimize_to_tray': document.getElementById('minimize_tray_btn'),
+        'close_app': document.getElementById('close_app_btn'),
+        'affirmations_lists': document.getElementById('affirmations_lists_title'),
+        'active_list': document.getElementById('active_list_label'),
+        'create_new_list': document.getElementById('create_new_list_label'),
+        'create_list': document.getElementById('create_list_btn'),
+        'volume': document.getElementById('volume_label'),
+        'status': document.getElementById('status_label'),
+        'binaural_stereo': document.getElementById('binaural_stereo_title'),
+        'brain_state': document.getElementById('brain_state_label'),
+        'stereo_volume': document.getElementById('stereo_volume_label'),
+        'stereo_status': document.getElementById('stereo_status_label'),
+        'stereo_preset': document.getElementById('stereo_preset_label')
+      };
+      
+      if (elements.speed_control) elements.speed_control.textContent = t('speed_control');
+      if (elements.flash_speed) elements.flash_speed.textContent = t('flash_speed');
+      if (elements.flash_duration) elements.flash_duration.textContent = t('flash_duration');
+      if (elements.save_config) elements.save_config.textContent = t('save_config');
+      if (elements.affirmations_management) elements.affirmations_management.textContent = t('affirmations_management');
+      if (elements.new_affirmation) elements.new_affirmation.textContent = t('new_affirmation');
+      if (elements.new_affirmation_placeholder) elements.new_affirmation_placeholder.placeholder = t('new_affirmation_placeholder');
+      if (elements.add_affirmation) elements.add_affirmation.textContent = t('add_affirmation');
+      if (elements.current_affirmations) {
+        const countEl = document.getElementById('affirmationCount');
+        const count = countEl ? countEl.textContent : '0';
+        elements.current_affirmations.innerHTML = t('current_affirmations') + ' (<span id="affirmationCount">' + count + '</span>/50):';
+      }
+      if (elements.controls) elements.controls.textContent = t('controls');
+      if (elements.restart_flashing) elements.restart_flashing.textContent = t('restart_flashing');
+      if (elements.minimize_to_tray) elements.minimize_to_tray.textContent = t('minimize_to_tray');
+      if (elements.close_app) elements.close_app.textContent = t('close_app');
+      
+      // Nuevos elementos de traducción
+      if (elements.affirmations_lists) elements.affirmations_lists.textContent = t('affirmations_lists');
+      if (elements.active_list) elements.active_list.textContent = t('active_list');
+      if (elements.create_new_list) elements.create_new_list.textContent = t('create_new_list');
+      if (elements.create_list) elements.create_list.textContent = t('create');
+      if (document.getElementById('newListName')) document.getElementById('newListName').placeholder = t('list_name_placeholder');
+      if (elements.volume) {
+        const currentVol = document.getElementById('binauralVolumeValue')?.textContent || '50';
+        elements.volume.innerHTML = t('volume') + ' <span id="binauralVolumeValue">' + currentVol + '</span>%';
+      }
+      if (elements.status) {
+        const currentStatus = document.getElementById('binauralStatus')?.textContent || t('status_stopped');
+        elements.status.innerHTML = t('status') + ' <span id="binauralStatus">' + currentStatus + '</span>';
+      }
+      if (elements.binaural_stereo) elements.binaural_stereo.textContent = t('binaural_stereo');
+      if (elements.brain_state) elements.brain_state.textContent = t('brain_state');
+      if (elements.stereo_volume) {
+        const currentVol = document.getElementById('binauralStereoVolumeValue')?.textContent || '50';
+        elements.stereo_volume.innerHTML = t('stereo_volume') + ': <span id="binauralStereoVolumeValue">' + currentVol + '</span>%';
+      }
+      if (elements.stereo_status) {
+        const currentStatus = document.getElementById('binauralStereoStatus')?.textContent || t('status_stopped');
+        elements.stereo_status.innerHTML = t('stereo_status') + ': <span id="binauralStereoStatus">' + currentStatus + '</span>';
+      }
+      if (elements.stereo_preset) {
+        const currentPreset = document.getElementById('binauralStereoActivePreset')?.textContent || t('stereo_preset_active');
+        elements.stereo_preset.innerHTML = t('stereo_preset_active') + ': <span id="binauralStereoActivePreset">' + currentPreset + '</span>';
+      }
+    }
+
+    function formatMinutesLabel(minutes) {
+      if (typeof minutes !== 'number' || Number.isNaN(minutes) || minutes <= 0) {
+        return '—';
+      }
+
+      const rounded = Math.round(minutes);
+      const hours = Math.floor(rounded / 60);
+      const remainingMinutes = rounded % 60;
+      const parts = [];
+
+      if (hours > 0) {
+        parts.push(`${hours}h`);
+      }
+
+      if (remainingMinutes > 0 || parts.length === 0) {
+        parts.push(`${remainingMinutes}m`);
+      }
+
+      return parts.join(' ');
+    }
+
+    function renderBinauralProgramSelector() {
+      const selector = document.getElementById('binauralProgramSelector');
+      const details = document.getElementById('binauralProgramDetails');
+
+      if (!selector || !details) {
+        return;
+      }
+
+      if (!binauralProgramsMetadata.length) {
+        selector.innerHTML = '<option value="">Sin programas disponibles</option>';
+        details.hidden = true;
+        return;
+      }
+
+      selector.innerHTML = binauralProgramsMetadata
+        .map((program) => `<option value="${program.id}">${program.name}</option>`)
+        .join('');
+
+      if (!binauralProgramSelectorInitialized) {
+        selector.addEventListener('change', (event) => {
+          renderBinauralProgramDetails(event.target.value);
+        });
+        binauralProgramSelectorInitialized = true;
+      }
+
+      const preferredProgramId =
+        (binauralSessionState.program && binauralSessionState.program.id) ||
+        (currentConfig.binauralSound && currentConfig.binauralSound.activeProgramId) ||
+        selector.value ||
+        binauralProgramsMetadata[0].id;
+
+      selector.value = preferredProgramId;
+
+      renderBinauralProgramDetails(preferredProgramId);
+      highlightActivePhase(binauralSessionState.currentPhaseIndex);
+    }
+
+    function renderBinauralProgramDetails(programId) {
+      const details = document.getElementById('binauralProgramDetails');
+      if (!details) {
+        return;
+      }
+
+      const program = binauralProgramsMetadata.find((item) => item.id === programId);
+
+      if (!program) {
+        details.hidden = true;
+        return;
+      }
+
+      details.hidden = false;
+
+      const nameEl = document.getElementById('binauralProgramName');
+      const objectiveEl = document.getElementById('binauralProgramObjective');
+      const carrierEl = document.getElementById('binauralProgramCarrier');
+      const durationEl = document.getElementById('binauralProgramDuration');
+      const phasesList = document.getElementById('binauralProgramPhases');
+
+      if (nameEl) nameEl.textContent = program.name;
+      if (objectiveEl) objectiveEl.textContent = program.shortDescription || program.objective || '';
+      if (carrierEl) carrierEl.textContent = program.carrier ?? '—';
+      if (durationEl) durationEl.textContent = formatMinutesLabel(program.totalDurationMinutes);
+
+      if (phasesList) {
+        phasesList.innerHTML = '';
+        program.phases.forEach((phase, index) => {
+          const item = document.createElement('li');
+          item.className = 'binaural-program-phase';
+          item.dataset.phaseIndex = index;
+
+          const title = document.createElement('strong');
+          const beatLabel = formatBeatRange(phase);
+          title.textContent = beatLabel ? `${phase.name} • ${beatLabel}` : phase.name;
+
+          const description = document.createElement('span');
+          description.textContent = phase.description || '';
+
+          const duration = document.createElement('span');
+          duration.textContent = `Duración: ${formatMinutesLabel(phase.durationMinutes)}`;
+
+          item.appendChild(title);
+          if (description.textContent) {
+            item.appendChild(description);
+          }
+          item.appendChild(duration);
+
+          phasesList.appendChild(item);
+        });
+      }
+    }
+    
+    // Cambiar idioma
+    async function changeLanguage(lang) {
+      await ipcRenderer.invoke('set-language', lang);
+      await loadTranslations(lang);
+      document.getElementById('languageSelector').value = lang;
+    }
+    
+    // Cargar configuración inicial
+    async function loadConfig() {
+      currentConfig = await ipcRenderer.invoke('get-config');
+      currentLanguage = await ipcRenderer.invoke('get-language');
+      
+      // Cargar traducciones
+      await loadTranslations(currentLanguage);
+      
+      // Configurar selector de idioma
+      document.getElementById('languageSelector').value = currentLanguage;
+      
+      // Renderizar listas
+      await renderLists();
+
+      updateUI();
+
+      await syncBinauralStateFromMain();
+    }
+    
+    // Renderizar el selector de listas
+    async function renderLists() {
+      try {
+        const lists = await ipcRenderer.invoke('get-lists');
+        const selector = document.getElementById('listSelector');
+        
+        selector.innerHTML = lists.map(l => 
+          `<option value="${l.id}">${l.name}</option>`
+        ).join('');
+        
+        selector.value = currentConfig.activeListId;
+      } catch (error) {
+        console.error('Error al renderizar listas:', error);
+      }
+    }
+    
+    // Cambiar lista activa
+    async function changeList(listId) {
+      try {
+        const success = await ipcRenderer.invoke('set-active-list', listId);
+        if (success) {
+          currentConfig = await ipcRenderer.invoke('get-config');
+          updateUI();
+        } else {
+          alert('❌ Error al cambiar de lista');
+        }
+      } catch (error) {
+        console.error('Error al cambiar lista:', error);
+        alert('❌ Error al cambiar lista: ' + error.message);
+      }
+    }
+    
+    // Crear nueva lista
+    async function createList() {
+      try {
+        const name = document.getElementById('newListName').value.trim();
+        if (!name) {
+          alert('❌ Por favor ingresa un nombre para la lista');
+          return;
+        }
+        
+        const newList = await ipcRenderer.invoke('create-list', name);
+        if (newList) {
+          document.getElementById('newListName').value = '';
+          await renderLists();
+          // Cambiar a la nueva lista
+          await changeList(newList.id);
+          alert('✅ Lista creada exitosamente');
+        } else {
+          alert('❌ Error al crear lista');
+        }
+      } catch (error) {
+        console.error('Error al crear lista:', error);
+        alert('❌ Error al crear lista: ' + error.message);
+      }
+    }
+    
+    // Actualizar la interfaz
+    function updateUI() {
+      document.getElementById('speedSlider').value = currentConfig.flashSpeed / 1000;
+      document.getElementById('speedValue').textContent = (currentConfig.flashSpeed / 1000).toFixed(1) + 's';
+      
+      document.getElementById('durationSlider').value = currentConfig.flashDuration;
+      document.getElementById('durationValue').textContent = currentConfig.flashDuration + 'ms';
+      
+      // Actualizar controles de audio binaural si existen
+      if (currentConfig.binauralSound) {
+        document.getElementById('binauralVolumeSlider').value = currentConfig.binauralSound.volume;
+        document.getElementById('binauralVolumeValue').textContent = currentConfig.binauralSound.volume;
+        document.getElementById('binauralVolumeDisplay').textContent = currentConfig.binauralSound.volume + '%';
+      }
+      
+      // Obtener la lista activa
+      const activeList = currentConfig.lists?.find(l => l.id === currentConfig.activeListId);
+      const affirmations = activeList?.affirmations || [];
+      
+      document.getElementById('affirmationCount').textContent = affirmations.length;
+      
+      const list = document.getElementById('affirmationsList');
+      list.innerHTML = '';
+      
+      affirmations.forEach((affirmation, index) => {
+        const item = document.createElement('div');
+        item.className = 'affirmation-item';
+        item.innerHTML = `
+          <span class="affirmation-text">${affirmation}</span>
+          <button onclick="removeAffirmation(${index})" class="danger">🗑️</button>
+        `;
+        list.appendChild(item);
+      });
+      
+      document.getElementById('status').textContent = `Activo - ${affirmations.length} afirmaciones`;
+    }
+    
+    // Actualizar velocidad
+    async function updateSpeed() {
+      try {
+        const speed = parseFloat(document.getElementById('speedSlider').value) * 1000;
+        const duration = parseInt(document.getElementById('durationSlider').value);
+        
+        // Validaciones
+        if (isNaN(speed) || speed < 1000 || speed > 15000) {
+          alert('❌ La velocidad debe estar entre 1 y 15 segundos');
+          return;
+        }
+        
+        if (isNaN(duration) || duration < 5 || duration > 500) {
+          alert('❌ La duración debe estar entre 5 y 500 milisegundos');
+          return;
+        }
+        
+        console.log('Actualizando velocidad:', speed, duration);
+        
+        currentConfig = await ipcRenderer.invoke('update-config', {
+          flashSpeed: speed,
+          flashDuration: duration
+        });
+        
+        console.log('Config actualizada:', currentConfig);
+        
+        await ipcRenderer.invoke('restart-flashing');
+        updateUI();
+        
+        alert('✅ Configuración guardada y aplicada');
+      } catch (error) {
+        console.error('Error al actualizar velocidad:', error);
+        alert('❌ Error al guardar configuración: ' + error.message);
+      }
+    }
+    
+    // Agregar afirmación
+    async function addAffirmation() {
+      try {
+        const text = document.getElementById('newAffirmation').value.trim();
+        
+        // Validación: texto vacío
+        if (!text) {
+          alert('❌ Por favor escribe una afirmación');
+          return;
+        }
+        
+        // Validación: longitud máxima
+        if (text.length > 200) {
+          alert('❌ La afirmación no puede tener más de 200 caracteres');
+          return;
+        }
+        
+        // Validación: mínimo de caracteres
+        if (text.length < 3) {
+          alert('❌ La afirmación debe tener al menos 3 caracteres');
+          return;
+        }
+        
+        // Validación: máximo de afirmaciones
+        const activeList = currentConfig.lists?.find(l => l.id === currentConfig.activeListId);
+        if (activeList && activeList.affirmations.length >= 50) {
+          alert('❌ Máximo 50 afirmaciones permitidas');
+          return;
+        }
+        
+        console.log('Agregando afirmación:', text);
+        const success = await ipcRenderer.invoke('add-affirmation', text);
+        console.log('Resultado:', success);
+        
+        if (success) {
+          currentConfig = await ipcRenderer.invoke('get-config');
+          updateUI();
+          document.getElementById('newAffirmation').value = '';
+          alert('✅ Afirmación agregada');
+        } else {
+          alert('❌ Error al agregar afirmación');
+        }
+      } catch (error) {
+        console.error('Error al agregar afirmación:', error);
+        alert('❌ Error al agregar afirmación: ' + error.message);
+      }
+    }
+    
+    // Eliminar afirmación
+    async function removeAffirmation(index) {
+      if (confirm('¿Eliminar esta afirmación?')) {
+        const success = await ipcRenderer.invoke('remove-affirmation', index);
+        
+        if (success) {
+          currentConfig = await ipcRenderer.invoke('get-config');
+          updateUI();
+          alert('✅ Afirmación eliminada');
+        } else {
+          alert('❌ Error al eliminar afirmación');
+        }
+      }
+    }
+    
+    // Reiniciar flashing
+    async function restartFlashing() {
+      await ipcRenderer.invoke('restart-flashing');
+      alert('✅ Flashing reiniciado');
+    }
+    
+    // Minimizar a la bandeja
+    function minimizeToTray() {
+      // Usar IPC para comunicarse con el proceso principal
+      ipcRenderer.invoke('minimize-window');
+      alert('📱 Aplicación minimizada a la bandeja. Los flashes siguen funcionando.');
+    }
+    
+    // Mostrar ventana desde la bandeja
+    function showWindow() {
+      ipcRenderer.invoke('show-window');
+    }
+    
+    // Cerrar aplicación completamente
+    function quitApp() {
+      if (confirm('¿Cerrar Reset to Millionaire por completo?')) {
+        const { remote } = require('electron');
+        if (remote) {
+          remote.app.quit();
+        } else {
+          // Fallback para versiones más nuevas
+          window.close();
+        }
+      }
+    }
+    
+    // Event listeners para sliders
+    document.getElementById('speedSlider').addEventListener('input', function() {
+      document.getElementById('speedValue').textContent = this.value + 's';
+    });
+    
+    document.getElementById('durationSlider').addEventListener('input', function() {
+      document.getElementById('durationValue').textContent = this.value + 'ms';
+    });
+    
+    // Enter para agregar afirmación
+    document.getElementById('newAffirmation').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        addAffirmation();
+      }
+    });
+    
+    // Funciones para el generador de audio binaural
+    function clampValue(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function ensureBinauralEngine() {
+      if (binauralEngine) {
+        return binauralEngine;
+      }
+
+      const Engine = window.BinauralAudioEngine;
+      if (!Engine) {
+        console.error('BinauralAudioEngine no disponible en esta ventana.');
+        return null;
+      }
+
+      binauralEngine = new Engine({
+        onPhaseStart: handleBinauralPhaseStart,
+        onPhaseEnd: handleBinauralPhaseEnd,
+        onSessionEnded: handleBinauralSessionEnded,
+        onError: handleBinauralError
+      });
+
+      binauralEngine.setVolume(binauralSessionState.volume);
+      return binauralEngine;
+    }
+
+    function getSelectedBinauralProgram() {
+      const selector = document.getElementById('binauralProgramSelector');
+      if (!selector) {
+        return null;
+      }
+
+      const programId = selector.value;
+      return binauralProgramsMetadata.find((item) => item.id === programId) || null;
+    }
+
+    function getCurrentPhase() {
+      if (
+        !binauralSessionState.program ||
+        !Array.isArray(binauralSessionState.program.phases)
+      ) {
+        return null;
+      }
+
+      const index = binauralSessionState.currentPhaseIndex;
+      if (typeof index !== 'number' || index < 0) {
+        return null;
+      }
+
+      return binauralSessionState.program.phases[index] || null;
+    }
+
+    function formatBeatRange(phase) {
+      if (!phase) {
+        return '';
+      }
+
+      const start = Number(phase.startBeatFrequency ?? phase.beatFrequency);
+      const end = Number(phase.endBeatFrequency ?? phase.beatFrequency);
+
+      if (Number.isFinite(start) && Number.isFinite(end)) {
+        if (Math.abs(start - end) < 0.01) {
+          return `${Math.round(start)}Hz`;
+        }
+        return `${Math.round(start)}Hz → ${Math.round(end)}Hz`;
+      }
+
+      if (Number.isFinite(start)) {
+        return `${Math.round(start)}Hz`;
+      }
+
+      return '';
+    }
+
+    function highlightActivePhase(activeIndex) {
+      const phasesList = document.getElementById('binauralProgramPhases');
+      if (!phasesList) {
+        return;
+      }
+
+      Array.from(phasesList.children).forEach((node) => {
+        if (!node.dataset || typeof node.dataset.phaseIndex === 'undefined') {
+          return;
+        }
+
+        if (
+          binauralSessionState.active &&
+          Number(node.dataset.phaseIndex) === Number(activeIndex)
+        ) {
+          node.classList.add('is-active');
+        } else {
+          node.classList.remove('is-active');
+        }
+      });
+    }
+
+    function syncBinauralControlsWithState() {
+      const volumePercent = Math.round(clampValue(binauralSessionState.volume, 0, 1) * 100);
+      const volumeSlider = document.getElementById('binauralVolumeSlider');
+      const volumeValue = document.getElementById('binauralVolumeValue');
+      const volumeDisplay = document.getElementById('binauralVolumeDisplay');
+
+      if (volumeSlider) {
+        volumeSlider.value = volumePercent;
+      }
+      if (volumeValue) {
+        volumeValue.textContent = volumePercent;
+      }
+      if (volumeDisplay) {
+        volumeDisplay.textContent = volumePercent + '%';
+      }
+    }
+
+    function updateBinauralStatus() {
+      const statusEl = document.getElementById('binauralStatus');
+      const btnEl = document.getElementById('binauralToggleBtn');
+
+      if (!statusEl || !btnEl) {
+        return;
+      }
+
+      if (binauralSessionState.active) {
+        const currentPhase = getCurrentPhase();
+        const phaseLabel = currentPhase ? currentPhase.name : '';
+        const beatLabel = currentPhase ? formatBeatRange(currentPhase) : '';
+        const details = [phaseLabel, beatLabel].filter(Boolean).join(' • ');
+
+        statusEl.textContent = details
+          ? `${t('status_running')} • ${details}`
+          : t('status_running');
+        statusEl.style.color = '#4caf50';
+        btnEl.textContent = t('stop');
+        btnEl.classList.remove('success');
+        btnEl.classList.add('danger');
+      } else if (binauralSessionState.completed) {
+        statusEl.textContent = t('status_completed');
+        statusEl.style.color = '#e8c547';
+        btnEl.textContent = t('start');
+        btnEl.classList.remove('danger');
+        btnEl.classList.add('success');
+      } else {
+        statusEl.textContent = t('status_stopped');
+        statusEl.style.color = '#f44336';
+        btnEl.textContent = t('start');
+        btnEl.classList.remove('danger');
+        btnEl.classList.add('success');
+      }
+    }
+
+    function updateBinauralFrequency(frequency) {
+      const parsed = Number(frequency);
+      if (Number.isFinite(parsed)) {
+        binauralSessionState.lastManualFrequency = parsed;
+      }
+
+      if (binauralSessionState.active) {
+        updateBinauralStatus();
+      }
+    }
+
+    function updateBinauralVolume(volume) {
+      const normalized = clampValue(volume / 100, 0, 1);
+      binauralSessionState.volume = normalized;
+      const engine = ensureBinauralEngine();
+      if (engine) {
+        engine.setVolume(normalized);
+      }
+    }
+
+    function handleBinauralPhaseStart(event) {
+      binauralSessionState.currentPhaseIndex = event.index;
+      binauralSessionState.active = true;
+      binauralSessionState.completed = false;
+
+      if (typeof event.startBeatFrequency === 'number') {
+        const beat = Math.round(event.startBeatFrequency);
+        ipcRenderer.invoke('set-binaural-frequency', beat).catch(() => {});
+      }
+
+      highlightActivePhase(event.index);
+      updateBinauralStatus();
+
+      ipcRenderer.send('binaural-session:phase-progress', {
+        phaseIndex: event.index,
+        status: 'started',
+        beatFrequency: event.startBeatFrequency,
+        programId: binauralSessionState.program ? binauralSessionState.program.id : null
+      });
+    }
+
+    function handleBinauralPhaseEnd(event) {
+      ipcRenderer.send('binaural-session:phase-progress', {
+        phaseIndex: event.index,
+        status: 'completed',
+        beatFrequency: event.endBeatFrequency,
+        programId: binauralSessionState.program ? binauralSessionState.program.id : null
+      });
+    }
+
+    function handleBinauralSessionEnded(event) {
+      binauralSessionState.active = false;
+      binauralSessionState.completed = (event?.reason || 'completed') === 'completed';
+      highlightActivePhase(null);
+      updateBinauralStatus();
+
+      ipcRenderer.send('binaural-session:ended', {
+        reason: event?.reason || 'completed',
+        programId: binauralSessionState.program ? binauralSessionState.program.id : null
+      });
+    }
+
+    function handleBinauralError(error) {
+      console.error('Error en la sesión binaural:', error);
+      alert('❌ Error en la sesión binaural: ' + (error?.message || error));
+      ipcRenderer.invoke('stop-binaural-session', { reason: 'error' }).catch(() => {});
+    }
+
+    function updateBinauralSessionState(state) {
+      if (!state || typeof state !== 'object') {
+        return;
+      }
+
+      binauralSessionState = {
+        ...binauralSessionState,
+        ...state,
+        program: state.program || binauralSessionState.program
+      };
+
+      if (typeof state.volume === 'number') {
+        binauralSessionState.volume = state.volume;
+      }
+
+      if (!binauralSessionState.active) {
+        highlightActivePhase(null);
+      } else {
+        highlightActivePhase(binauralSessionState.currentPhaseIndex);
+      }
+
+      updateBinauralStatus();
+      syncBinauralControlsWithState();
+    }
+
+    async function syncBinauralStateFromMain() {
+      try {
+        const response = await ipcRenderer.invoke('get-binaural-session-state');
+        if (response && response.success && response.state) {
+          updateBinauralSessionState(response.state);
+        }
+      } catch (error) {
+        console.error('Error al obtener el estado binaural:', error);
+      }
+    }
+
+    function buildBinauralSessionPayload(program) {
+      if (!program) {
+        return null;
+      }
+
+      const volumeSlider = document.getElementById('binauralVolumeSlider');
+      const volumePercent = volumeSlider
+        ? parseInt(volumeSlider.value, 10)
+        : Math.round(clampValue(binauralSessionState.volume, 0, 1) * 100);
+
+      const phases = Array.isArray(program.phases)
+        ? program.phases.map((phase, index) => ({
+            id: phase.id || `${program.id}-phase-${index}`,
+            name: phase.name || `Fase ${index + 1}`,
+            description: phase.description || '',
+            durationMinutes: phase.durationMinutes,
+            beatFrequency: phase.beatFrequency,
+            startBeatFrequency:
+              typeof phase.startBeatFrequency === 'number'
+                ? phase.startBeatFrequency
+                : phase.beatFrequency,
+            endBeatFrequency:
+              typeof phase.endBeatFrequency === 'number'
+                ? phase.endBeatFrequency
+                : phase.beatFrequency
+          }))
+        : [];
+
+      return {
+        program: {
+          id: program.id,
+          name: program.name,
+          objective: program.objective,
+          shortDescription: program.shortDescription,
+          carrier: typeof program.carrier === 'number' ? program.carrier : 128,
+          phases
+        },
+        volume: volumePercent,
+        initialFrequency: phases.length
+          ? phases[0].startBeatFrequency ?? phases[0].beatFrequency
+          : undefined
+      };
+    }
+
+    async function toggleBinaural() {
+      try {
+        if (binauralSessionState.active) {
+          await ipcRenderer.invoke('stop-binaural-session', { reason: 'manual' });
+          alert('🔇 Sesión binaural detenida');
+          return;
+        }
+
+        const program = getSelectedBinauralProgram();
+        if (!program) {
+          alert('⚠️ Selecciona un programa binaural para iniciar.');
+          return;
+        }
+
+        const payload = buildBinauralSessionPayload(program);
+        if (!payload) {
+          alert('❌ No se pudo preparar el programa seleccionado.');
+          return;
+        }
+
+        const response = await ipcRenderer.invoke('start-binaural-session', payload);
+        if (!response || !response.success) {
+          throw new Error(response?.message || 'No se pudo iniciar la sesión binaural.');
+        }
+
+        if (response.state) {
+          updateBinauralSessionState(response.state);
+        }
+
+        alert('🔊 Sesión binaural iniciada');
+      } catch (error) {
+        console.error('Error al alternar sonido:', error);
+        alert('❌ Error al alternar sonido: ' + error.message);
+      }
+    }
+    
+    // Listeners para los sliders de audio binaural
+    document.getElementById('binauralVolumeSlider').addEventListener('input', async function() {
+      const volume = parseInt(this.value);
+      document.getElementById('binauralVolumeValue').textContent = volume;
+      document.getElementById('binauralVolumeDisplay').textContent = volume + '%';
+      
+      // Actualizar volumen si está reproduciendo
+      updateBinauralVolume(volume);
+      
+      // Guardar en config
+      await ipcRenderer.invoke('set-binaural-volume', volume);
+    });
+    
+    // Listeners para eventos IPC del main process
+    ipcRenderer.on('binaural-session:start', (event, payload = {}) => {
+      const engine = ensureBinauralEngine();
+      if (!engine) {
+        return;
+      }
+
+      if (payload.program) {
+        binauralSessionState.program = payload.program;
+      }
+
+      if (typeof payload.volume === 'number') {
+        binauralSessionState.volume = payload.volume;
+        engine.setVolume(payload.volume);
+      }
+
+      engine.start(payload);
+      binauralSessionState.active = true;
+      binauralSessionState.completed = false;
+      highlightActivePhase(null);
+      updateBinauralStatus();
+      syncBinauralControlsWithState();
+    });
+
+    ipcRenderer.on('binaural-session:stop', (event, payload = {}) => {
+      const engine = ensureBinauralEngine();
+      if (engine) {
+        engine.stop({ reason: payload.reason || 'manual', notify: false });
+      }
+
+      binauralSessionState.active = false;
+      binauralSessionState.endReason = payload.reason || 'manual';
+      if ((payload.reason || 'manual') === 'completed') {
+        binauralSessionState.completed = true;
+      }
+      highlightActivePhase(null);
+      updateBinauralStatus();
+    });
+
+    ipcRenderer.on('binaural-session:state', (event, state) => {
+      updateBinauralSessionState(state);
+      if (state && typeof state.volume === 'number') {
+        const engine = ensureBinauralEngine();
+        if (engine) {
+          engine.setVolume(state.volume);
+        }
+      }
+      if (state && state.program) {
+        binauralSessionState.program = state.program;
+      }
+    });
+
+    ipcRenderer.on('update-binaural-frequency', (event, frequency) => {
+      if (typeof frequency === 'number') {
+        updateBinauralFrequency(frequency);
+      }
+    });
+
+    ipcRenderer.on('update-binaural-volume', (event, volume) => {
+      const slider = document.getElementById('binauralVolumeSlider');
+      const valueEl = document.getElementById('binauralVolumeValue');
+      const displayEl = document.getElementById('binauralVolumeDisplay');
+
+      if (typeof volume === 'number') {
+        if (slider) slider.value = volume;
+        if (valueEl) valueEl.textContent = volume;
+        if (displayEl) displayEl.textContent = volume + '%';
+      }
+
+      updateBinauralVolume(volume);
+    });
+    
+    // ===== BINAURAL STEREO SYSTEM =====
+    function startBinauralStereo(preset) {
+      try {
+        stopBinauralStereo();
+        
+        const presetData = BINAURAL_STEREO_PRESETS[preset];
+        if (!presetData) {
+          console.error('Preset no encontrado:', preset);
+          return;
+        }
+        
+        // Crear contexto de audio
+        binauralStereoContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Crear osciladores para canal izquierdo y derecho
+        binauralStereoLeftOsc = binauralStereoContext.createOscillator();
+        binauralStereoRightOsc = binauralStereoContext.createOscillator();
+        
+        // Configurar tipo de onda
+        binauralStereoLeftOsc.type = 'sine';
+        binauralStereoRightOsc.type = 'sine';
+        
+        // Configurar frecuencias
+        binauralStereoLeftOsc.frequency.value = presetData.baseL;
+        binauralStereoRightOsc.frequency.value = presetData.baseR;
+        
+        // Crear nodos de ganancia
+        binauralStereoLeftGain = binauralStereoContext.createGain();
+        binauralStereoRightGain = binauralStereoContext.createGain();
+        
+        // Configurar volumen
+        const volume = parseInt(document.getElementById('binauralStereoVolumeSlider').value) / 100;
+        binauralStereoLeftGain.gain.value = volume * 0.5; // 50% para evitar clipping
+        binauralStereoRightGain.gain.value = volume * 0.5;
+        
+        // Crear merger para canales estéreo
+        binauralStereoMerger = binauralStereoContext.createChannelMerger(2);
+        
+        // Conectar: osc -> gain -> merger (canal específico) -> destination
+        binauralStereoLeftOsc.connect(binauralStereoLeftGain);
+        binauralStereoLeftGain.connect(binauralStereoMerger, 0, 0); // Canal izquierdo
+        
+        binauralStereoRightOsc.connect(binauralStereoRightGain);
+        binauralStereoRightGain.connect(binauralStereoMerger, 0, 1); // Canal derecho
+        
+        binauralStereoMerger.connect(binauralStereoContext.destination);
+        
+        // Iniciar osciladores
+        binauralStereoLeftOsc.start();
+        binauralStereoRightOsc.start();
+        
+        binauralStereoPlaying = true;
+        binauralStereoActivePreset = preset;
+        updateBinauralStereoStatus();
+        highlightActivePresetButton(preset);
+        
+        console.log(`Binaural estéreo iniciado: ${presetData.name} (L:${presetData.baseL}Hz, R:${presetData.baseR}Hz, diff:${presetData.diff}Hz)`);
+      } catch (error) {
+        console.error('Error al iniciar binaural estéreo:', error);
+        alert('❌ Error al iniciar: ' + error.message);
+      }
+    }
+    
+    function stopBinauralStereo() {
+      try {
+        if (binauralStereoLeftOsc) {
+          binauralStereoLeftOsc.stop();
+          binauralStereoLeftOsc = null;
+        }
+        if (binauralStereoRightOsc) {
+          binauralStereoRightOsc.stop();
+          binauralStereoRightOsc = null;
+        }
+        if (binauralStereoContext) {
+          binauralStereoContext.close();
+          binauralStereoContext = null;
+        }
+        binauralStereoLeftGain = null;
+        binauralStereoRightGain = null;
+        binauralStereoMerger = null;
+        
+        binauralStereoPlaying = false;
+        binauralStereoActivePreset = null;
+        updateBinauralStereoStatus();
+        clearPresetButtonHighlights();
+      } catch (error) {
+        console.error('Error al detener binaural estéreo:', error);
+      }
+    }
+    
+    function updateBinauralStereoVolume(volume) {
+      if (binauralStereoLeftGain && binauralStereoRightGain) {
+        const normalizedVolume = (volume / 100) * 0.5;
+        binauralStereoLeftGain.gain.value = normalizedVolume;
+        binauralStereoRightGain.gain.value = normalizedVolume;
+      }
+    }
+    
+    function updateBinauralStereoStatus() {
+      const statusEl = document.getElementById('binauralStereoStatus');
+      const presetEl = document.getElementById('binauralStereoActivePreset');
+      const btnEl = document.getElementById('binauralStereoToggleBtn');
+      
+      if (binauralStereoPlaying && binauralStereoActivePreset) {
+        const preset = BINAURAL_STEREO_PRESETS[binauralStereoActivePreset];
+        statusEl.textContent = 'Reproduciendo';
+        statusEl.style.color = '#4caf50';
+        presetEl.textContent = `${preset.name} (${preset.diff}Hz)`;
+        btnEl.textContent = 'Detener';
+        btnEl.classList.remove('success');
+        btnEl.classList.add('danger');
+      } else {
+        statusEl.textContent = 'Detenido';
+        statusEl.style.color = '#f44336';
+        presetEl.textContent = 'Ninguno';
+        btnEl.textContent = 'Iniciar';
+        btnEl.classList.remove('danger');
+        btnEl.classList.add('success');
+      }
+    }
+    
+    function highlightActivePresetButton(preset) {
+      clearPresetButtonHighlights();
+      const btn = document.getElementById(`preset-${preset}`);
+      if (btn) {
+        btn.style.background = 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)';
+        btn.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.5)';
+      }
+    }
+    
+    function clearPresetButtonHighlights() {
+      ['delta', 'theta', 'alpha', 'beta', 'gamma'].forEach(preset => {
+        const btn = document.getElementById(`preset-${preset}`);
+        if (btn) {
+          btn.style.background = '';
+          btn.style.boxShadow = '';
+        }
+      });
+    }
+    
+    function setBinauralStereoPreset(preset) {
+      if (binauralStereoPlaying) {
+        stopBinauralStereo();
+      }
+      startBinauralStereo(preset);
+    }
+    
+    function toggleBinauralStereo() {
+      if (binauralStereoPlaying) {
+        stopBinauralStereo();
+        alert('🔇 Binaural estéreo detenido');
+      } else {
+        alert('⚠️ Selecciona un estado cerebral primero');
+      }
+    }
+    // ===== END BINAURAL STEREO SYSTEM =====
+    
+    // ===== REPRODUCTOR DE AUDIO =====
+    let audioElement = null;
+    let currentAudioId = null;
+    let audioPlaying = false;
+    let audioSpeed = 1.0;
+    
+    // Función para generar nombre legible desde filename
+    function getAudioNameFromFilename(filename) {
+      // Remover extensión .mp3
+      const nameWithoutExt = filename.replace(/\.mp3$/i, '');
+      // Reemplazar guiones bajos con espacios y capitalizar
+      return nameWithoutExt
+        .replace(/_/g, ' ')
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    }
+    
+    let AUDIO_LIST = [];
+    
+    // Cargar lista de archivos MP3 automáticamente desde la carpeta
+    async function loadAudioFiles() {
+      try {
+        const files = await ipcRenderer.invoke('get-audio-files');
+        AUDIO_LIST = files.map(filename => {
+          const id = filename.replace(/\.mp3$/i, '').replace(/[^a-zA-Z0-9]/g, '-');
+          return {
+            id: id,
+            filename: filename,
+            name: getAudioNameFromFilename(filename)
+          };
+        });
+        
+        // Ordenar alfabéticamente por nombre
+        AUDIO_LIST.sort((a, b) => a.name.localeCompare(b.name));
+        
+        renderAudioSelector();
+      } catch (error) {
+        console.error('Error al cargar archivos de audio:', error);
+      }
+    }
+    
+    // Renderizar selector de audio
+    function renderAudioSelector() {
+      const selector = document.getElementById('audioSelector');
+      selector.innerHTML = AUDIO_LIST.map(a => 
+        `<option value="${a.id}">${a.name}</option>`
+      ).join('');
+      
+      if (AUDIO_LIST.length > 0) {
+        currentAudioId = AUDIO_LIST[0].id;
+        selector.value = currentAudioId;
+      }
+    }
+    
+    // Obtener ruta del audio
+    async function getAudioPath(filename) {
+      try {
+        const path = await ipcRenderer.invoke('get-audio-path', filename);
+        return path;
+      } catch (error) {
+        console.error('Error obteniendo ruta de audio:', error);
+        // Fallback a ruta relativa
+        return `./assets/audio/${filename}`;
+      }
+    }
+    
+    // Cargar audio
+    async function loadAudio(audioId) {
+      const audio = AUDIO_LIST.find(a => a.id === audioId);
+      if (!audio) {
+        console.warn('Audio no encontrado:', audioId);
+        return false;
+      }
+      
+      const path = await getAudioPath(audio.filename);
+      if (!path) {
+        updateAudioStatus('Error al cargar el audio');
+        return false;
+      }
+      
+      // Limpiar audio anterior
+      if (audioElement) {
+        audioElement.pause();
+        audioElement.removeEventListener('ended', handleAudioEnded);
+        audioElement = null;
+      }
+      
+      // Crear nuevo elemento de audio
+      audioElement = new Audio(path);
+      audioElement.playbackRate = audioSpeed;
+      audioElement.loop = false;
+      
+      audioElement.addEventListener('ended', handleAudioEnded);
+      audioElement.addEventListener('error', (e) => {
+        console.error('Error en reproducción de audio:', e);
+        updateAudioStatus('Error al reproducir el audio');
+        audioPlaying = false;
+        updateAudioButtons();
+      });
+      
+      currentAudioId = audioId;
+      updateAudioStatus(`Audio cargado: ${audio.name}`);
+      return true;
+    }
+    
+    // Manejar fin de audio (loop seamless)
+    function handleAudioEnded() {
+      if (audioElement && audioPlaying) {
+        audioElement.currentTime = 0;
+        audioElement.play().catch((error) => {
+          console.error('Error al reiniciar audio:', error);
+        });
+      }
+    }
+    
+    // Actualizar estado del audio
+    function updateAudioStatus(text) {
+      document.getElementById('audioStatusText').textContent = text;
+    }
+    
+    // Actualizar botones
+    function updateAudioButtons() {
+      const btn = document.getElementById('audio_play_pause_btn');
+      if (audioPlaying) {
+        btn.textContent = 'Pausar';
+      } else {
+        btn.textContent = 'Reproducir';
+      }
+    }
+    
+    // Actualizar velocidad
+    function updateAudioSpeed(value) {
+      const speed = parseFloat(value);
+      audioSpeed = speed;
+      document.getElementById('audioSpeedValue').textContent = speed.toFixed(1) + 'x';
+      document.getElementById('audioSpeedDisplay').textContent = speed.toFixed(1) + 'x';
+      
+      if (audioElement) {
+        audioElement.playbackRate = speed;
+      }
+    }
+    
+    // Reproducir/Pausar
+    async function toggleAudioPlayPause() {
+      if (!audioElement) {
+        // Cargar audio si no está cargado
+        const audioId = document.getElementById('audioSelector').value;
+        if (audioId) {
+          const loaded = await loadAudio(audioId);
+          if (!loaded) return;
+        } else {
+          updateAudioStatus('Selecciona un audio primero');
+          return;
+        }
+      }
+      
+      if (audioPlaying) {
+        // Pausar
+        audioElement.pause();
+        audioPlaying = false;
+        updateAudioStatus('Pausado');
+      } else {
+        // Reproducir
+        try {
+          await audioElement.play();
+          audioPlaying = true;
+          const audio = AUDIO_LIST.find(a => a.id === currentAudioId);
+          updateAudioStatus(`Reproduciendo: ${audio ? audio.name : ''}`);
+        } catch (error) {
+          console.error('Error al reproducir audio:', error);
+          updateAudioStatus('Error al reproducir');
+        }
+      }
+      
+      updateAudioButtons();
+    }
+    
+    // Detener
+    function stopAudio() {
+      if (audioElement) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+        audioPlaying = false;
+        updateAudioStatus('Detenido');
+        updateAudioButtons();
+      }
+    }
+    
+    // Cambiar audio
+    async function changeAudio(audioId) {
+      if (!audioId) return;
+      
+      // Detener reproducción actual
+      stopAudio();
+      
+      // Cargar nuevo audio
+      await loadAudio(audioId);
+      updateAudioButtons();
+    }
+    // ===== FIN REPRODUCTOR DE AUDIO =====
+    
+    // Listener para volumen de binaural estéreo
+    document.getElementById('binauralStereoVolumeSlider').addEventListener('input', function() {
+      const volume = parseInt(this.value);
+      document.getElementById('binauralStereoVolumeValue').textContent = volume;
+      document.getElementById('binauralStereoVolumeDisplay').textContent = volume + '%';
+      
+      updateBinauralStereoVolume(volume);
+    });
+    
+    // Cargar configuración al iniciar
+    loadConfig();
+    loadAudioFiles();
+  </script>
+  
+  <!-- Cargar programas binaurales desde IPC (método principal) -->
+  <script>
+    (async function() {
+      try {
+        // Esperar a que el DOM esté completamente cargado
+        if (document.readyState === 'loading') {
+          await new Promise(resolve => {
+            document.addEventListener('DOMContentLoaded', resolve);
+          });
+        }
+        
+        // Esperar un momento adicional para asegurar que los listeners estén registrados
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Cargar programas desde IPC (método principal y más confiable)
+        if (typeof window !== 'undefined' && window.require) {
+          try {
+            const { ipcRenderer } = window.require('electron');
+            const programs = await ipcRenderer.invoke('get-binaural-programs');
+            
+            if (programs && Array.isArray(programs) && programs.length > 0) {
+              console.log(`Programas binaurales cargados desde IPC: ${programs.length}`);
+              
+              // Disparar el evento para que los listeners lo capturen
+              window.dispatchEvent(
+                new CustomEvent('binaural-programs-ready', { detail: programs })
+              );
+              
+              // Intentar cargar BinauralAudioEngine como fallback desde módulo ES6
+              try {
+                const { BinauralAudioEngine } = await import('./src/binauralAudioEngine.js');
+                window.BinauralAudioEngine = BinauralAudioEngine;
+              } catch (engineError) {
+                console.warn('No se pudo cargar BinauralAudioEngine desde módulo, continuando sin él:', engineError);
+              }
+              
+              return;
+            }
+          } catch (ipcError) {
+            console.error('Error al cargar programas desde IPC:', ipcError);
+          }
+        }
+        
+        // Fallback: Intentar cargar desde módulo ES6 si IPC falla
+        try {
+          const { binauralPrograms } = await import('./src/binauralPrograms.js');
+          const { BinauralAudioEngine } = await import('./src/binauralAudioEngine.js');
+          
+          if (Array.isArray(binauralPrograms) && binauralPrograms.length > 0) {
+            console.log(`Programas binaurales cargados desde módulo ES6 (fallback): ${binauralPrograms.length}`);
+            window.dispatchEvent(
+              new CustomEvent('binaural-programs-ready', { detail: binauralPrograms })
+            );
+            window.BinauralAudioEngine = BinauralAudioEngine;
+          } else {
+            console.error('Error: No se pudieron cargar los programas binaurales desde ningún método');
+          }
+        } catch (moduleError) {
+          console.error('Error al cargar programas desde módulo ES6:', moduleError);
+        }
+        
+      } catch (error) {
+        console.error('Error general al cargar programas binaurales:', error);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+# Task ID: 1
+# Title: Estandarizar estructura de la aplicación en Electron
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Reorganizar la aplicación para usar solo 'electron/main.js' como base, eliminando versiones duplicadas y actualizando 'package.json'.
+# Details:
+1. Revisar la estructura actual del proyecto para identificar archivos duplicados o innecesarios.
+2. Consolidar el código principal en 'electron/main.js', asegurando que toda la lógica de inicio de la aplicación esté centralizada aquí.
+3. Eliminar cualquier archivo de configuración o script que no sea necesario tras la consolidación.
+4. Actualizar 'package.json' para reflejar los cambios en la estructura del proyecto, asegurándose de que los scripts de inicio y las dependencias sean correctos.
+5. Probar la aplicación para verificar que se inicia correctamente desde 'electron/main.js'.
+
+# Test Strategy:
+1. Ejecutar la aplicación y verificar que se inicia correctamente sin errores desde 'electron/main.js'.
+2. Revisar los logs de la aplicación para asegurar que no hay referencias a archivos eliminados o rutas incorrectas.
+3. Verificar que 'package.json' contiene las rutas y scripts correctos, y que todas las dependencias necesarias están presentes.
+4. Realizar pruebas de funcionalidad básica para asegurar que la aplicación sigue funcionando como se espera.
+
+# Subtasks:
+## 1. Revisar estructura actual del proyecto [pending]
+### Dependencies: None
+### Description: Identificar archivos duplicados o innecesarios en el proyecto.
+### Details:
+Analizar la estructura de directorios y archivos para detectar duplicados o elementos innecesarios.
+
+## 2. Consolidar código en 'electron/main.js' [pending]
+### Dependencies: 1.1
+### Description: Centralizar la lógica de inicio de la aplicación en 'electron/main.js'.
+### Details:
+Mover toda la lógica de inicio y configuración a 'electron/main.js', asegurando que sea el único punto de entrada.
+
+## 3. Eliminar archivos y scripts innecesarios [pending]
+### Dependencies: 1.2
+### Description: Eliminar archivos de configuración o scripts no necesarios tras la consolidación.
+### Details:
+Eliminar 'electron/main.ts', 'electron/preload.ts' y limpiar 'dist-electron'.
+
+## 4. Actualizar 'package.json' [pending]
+### Dependencies: 1.3
+### Description: Modificar 'package.json' para reflejar cambios en la estructura del proyecto.
+### Details:
+Actualizar scripts de inicio y dependencias en 'package.json' para que apunten correctamente a 'electron/main.js'.
+
+## 5. Probar funcionalidad de la aplicación [pending]
+### Dependencies: 1.4
+### Description: Verificar que la aplicación se inicia correctamente y que las páginas HTML funcionan.
+### Details:
+Probar que 'control.html' y 'overlay.html' funcionan correctamente y que la aplicación se inicia sin errores.
+

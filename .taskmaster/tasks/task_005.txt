@@ -1,0 +1,37 @@
+# Task ID: 5
+# Title: Documentación y build para versión final
+# Status: pending
+# Dependencies: 1, 2, 3, 4
+# Priority: low
+# Description: Actualizar el README, crear scripts de build, y añadir iconos y changelog para la versión final del software.
+# Details:
+1. Revisar y actualizar el archivo README para reflejar las características y cambios más recientes, asegurando que incluya instrucciones claras de instalación y uso. 2. Crear scripts de build automatizados para facilitar la generación de versiones de la aplicación, asegurando compatibilidad con macOS y Windows. 3. Diseñar e integrar iconos de alta calidad para la aplicación, asegurando que se adapten a diferentes resoluciones y sistemas operativos. 4. Elaborar un changelog detallado que documente todas las modificaciones y mejoras realizadas desde la última versión, utilizando un formato estándar como 'Keep a Changelog'. 5. Asegurarse de que toda la documentación esté alineada con la identidad visual y el tono del proyecto.
+
+# Test Strategy:
+1. Revisar el README actualizado para verificar que todas las instrucciones sean claras y precisas. 2. Ejecutar los scripts de build en ambos sistemas operativos para asegurar que generen correctamente las versiones de la aplicación sin errores. 3. Probar los iconos en diferentes dispositivos y resoluciones para confirmar su correcta visualización. 4. Revisar el changelog para asegurar que todos los cambios estén documentados de manera precisa y comprensible.
+
+# Subtasks:
+## 1. Actualizar el archivo README [pending]
+### Dependencies: None
+### Description: Revisar y actualizar el archivo README para reflejar las características y cambios más recientes.
+### Details:
+Asegurarse de incluir instrucciones claras de instalación y uso, alineadas con la identidad visual del proyecto.
+
+## 2. Crear scripts de build automatizados [pending]
+### Dependencies: 5.1
+### Description: Desarrollar scripts de build para facilitar la generación de versiones de la aplicación.
+### Details:
+Asegurar compatibilidad con macOS y Windows utilizando scripts npm para build y distribución.
+
+## 3. Diseñar e integrar iconos de alta calidad [pending]
+### Dependencies: 5.1
+### Description: Crear e integrar iconos para la aplicación, adaptados a diferentes resoluciones y sistemas operativos.
+### Details:
+Preparar iconos de la app para macOS y Windows, asegurando que se adapten a diferentes resoluciones.
+
+## 4. Elaborar un changelog detallado [pending]
+### Dependencies: 5.1
+### Description: Documentar todas las modificaciones y mejoras realizadas desde la última versión.
+### Details:
+Utilizar un formato estándar como 'Keep a Changelog' para asegurar claridad y consistencia.
+

@@ -1,0 +1,50 @@
+{
+  "app_subtitle": "Audios y binaural para tu mindset",
+
+  "tab_binaural": "Binaural",
+  "tab_audios": "Audios",
+  "tab_settings": "Ajustes",
+
+  "binaural_title": "Programas Binaurales",
+  "binaural_sub": "Usa audífonos estéreo para el efecto óptimo.",
+  "active_program": "Programa activo",
+  "pure_freq_title": "Frecuencias puras",
+  "pure_freq_sub": "Un tono binaural constante hasta que detengas.",
+  "freq_delta": "Delta",
+  "freq_theta": "Theta",
+  "freq_alpha": "Alpha",
+  "freq_beta": "Beta",
+  "freq_gamma": "Gamma",
+  "carrier": "Carrier",
+  "duration": "Duración",
+  "current_phase": "Fase actual",
+  "volume_label": "Volumen",
+  "play": "Reproducir",
+  "stop": "Detener",
+  "pause": "Pausar",
+
+  "status_stopped": "Detenido",
+  "status_running": "En sesión",
+  "status_completed": "Sesión finalizada",
+
+  "session_stopped": "Sesión detenida",
+  "session_complete": "Sesión completada",
+  "no_program": "Selecciona un programa",
+  "error_audio": "Error al iniciar audio",
+  "tap_to_play": "Toca de nuevo para reproducir",
+
+  "audios_title": "Audios de afirmaciones",
+  "audios_sub": "Elige una pista para comenzar.",
+  "no_tracks": "No hay audios disponibles",
+  "no_tracks_sub": "Verifica que los archivos MP3 estén presentes.",
+
+  "settings_title": "Ajustes",
+  "language": "Idioma",
+  "keep_awake": "Mantener pantalla encendida",
+  "keep_awake_desc": "Evita que la pantalla se apague durante una sesión.",
+  "wake_unavailable": "Wake Lock no disponible en este navegador",
+
+  "about_tagline": "Audios y programas binaurales.",
+  "about_disclaimer": "Usa audífonos estéreo para percibir correctamente el efecto binaural. Esta aplicación no sustituye consejo médico profesional.",
+  "version": "Versión"
+}
