@@ -68,6 +68,7 @@ function cacheDom() {
     binaural: $('#view-binaural'),
     audios: $('#view-audios'),
     courses: $('#view-courses'),
+    'master-ai': $('#view-master-ai'),
     community: $('#view-community'),
     settings: $('#view-settings')
   };
@@ -172,13 +173,23 @@ function applyTranslations() {
     const val = t(key, el.textContent);
     el.textContent = val;
   });
-  // Refresh dynamic strings
+  $$('[data-i18n-placeholder]').forEach((el) => {
+    const key = el.dataset.i18nPlaceholder;
+    const val = t(key, el.getAttribute('placeholder') || '');
+    el.setAttribute('placeholder', val);
+  });
   if (els.binauralStatus) {
     const active = state.sessionStartAt != null;
     els.binauralStatus.textContent = active ? t('status_running', 'En sesión') : t('status_stopped', 'Detenido');
   }
-  // Rebuild program list (phase names come from JS file -> language-agnostic, left as-is)
-  // but duration label is localized via "duration" key, static in DOM.
+}
+
+function tArray(key) {
+  const lang = state.translations[state.language] || {};
+  const val = lang[key];
+  if (Array.isArray(val) && val.length) return val;
+  const fallback = (state.translations.es || {})[key];
+  return Array.isArray(fallback) ? fallback : [];
 }
 
 function setLanguage(lang) {
@@ -833,6 +844,152 @@ function installAudioUnlock() {
 }
 
 // ===========================================================================
+// MASTER AI (frontend-only chat simulation)
+// ===========================================================================
+const MASTER_KEYWORDS = [
+  { match: ['dinero', 'abundancia', 'rico', 'millonar', 'prosper', 'atraigo', 'atraer'], key: 'master_reply_abundance' },
+  { match: ['miedo', 'ansiedad', 'duda', 'inseguro', 'bloqueo', 'fear', 'afraid', 'anxious'], key: 'master_reply_fear' },
+  { match: ['habito', 'hábito', 'rutina', 'disciplina', 'consistencia', 'habit', 'routine'], key: 'master_reply_habits' },
+  { match: ['manifestar', 'manifest', 'ley de atrac', 'visualiz'], key: 'master_reply_manifest' },
+  { match: ['meditar', 'meditac', 'respir', 'calma', 'meditate', 'breath'], key: 'master_reply_meditate' },
+  { match: ['afirmac', 'afirma', 'mantra', 'affirm'], key: 'master_reply_affirm' }
+];
+
+const masterChat = {
+  form: null,
+  input: null,
+  thread: null,
+  sendBtn: null,
+  thinking: false,
+  initialized: false
+};
+
+function pickMasterReply(text) {
+  const normalized = (text || '').toLowerCase();
+  for (const rule of MASTER_KEYWORDS) {
+    if (rule.match.some((k) => normalized.includes(k))) {
+      const pool = tArray(rule.key);
+      if (pool.length) return pool[Math.floor(Math.random() * pool.length)];
+    }
+  }
+  const fallback = tArray('master_reply_default');
+  if (fallback.length) return fallback[Math.floor(Math.random() * fallback.length)];
+  return t('master_reply_fallback_text', 'Gracias por compartir. Respira profundo y confía en el proceso.');
+}
+
+function masterAddBubble(role, text) {
+  const wrap = document.createElement('div');
+  wrap.className = role === 'user' ? 'bubble bubble--user' : 'bubble bubble--coach';
+  if (role === 'coach') {
+    const avatar = document.createElement('span');
+    avatar.className = 'bubble__avatar';
+    avatar.setAttribute('aria-hidden', 'true');
+    avatar.textContent = 'MA';
+    wrap.appendChild(avatar);
+  }
+  const content = document.createElement('div');
+  content.className = 'bubble__content';
+  const p = document.createElement('p');
+  p.textContent = text;
+  content.appendChild(p);
+  wrap.appendChild(content);
+  masterChat.thread.appendChild(wrap);
+  requestAnimationFrame(() => {
+    masterChat.thread.scrollTop = masterChat.thread.scrollHeight;
+  });
+  return wrap;
+}
+
+function masterShowTyping() {
+  const wrap = document.createElement('div');
+  wrap.className = 'bubble bubble--coach bubble--typing';
+  wrap.id = 'masterTyping';
+  const avatar = document.createElement('span');
+  avatar.className = 'bubble__avatar';
+  avatar.setAttribute('aria-hidden', 'true');
+  avatar.textContent = 'MA';
+  const content = document.createElement('div');
+  content.className = 'bubble__content';
+  const dots = document.createElement('span');
+  dots.className = 'typing-dots';
+  dots.setAttribute('aria-label', t('master_typing', 'Master AI está escribiendo'));
+  dots.innerHTML = '<span></span><span></span><span></span>';
+  content.appendChild(dots);
+  wrap.appendChild(avatar);
+  wrap.appendChild(content);
+  masterChat.thread.appendChild(wrap);
+  requestAnimationFrame(() => {
+    masterChat.thread.scrollTop = masterChat.thread.scrollHeight;
+  });
+}
+
+function masterHideTyping() {
+  const node = document.getElementById('masterTyping');
+  if (node && node.parentNode) node.parentNode.removeChild(node);
+}
+
+function masterAutoResize() {
+  const ta = masterChat.input;
+  if (!ta) return;
+  ta.style.height = 'auto';
+  ta.style.height = Math.min(ta.scrollHeight, 110) + 'px';
+}
+
+async function masterSend(text) {
+  const trimmed = (text || '').trim();
+  if (!trimmed || masterChat.thinking) return;
+  masterChat.thinking = true;
+  masterChat.sendBtn?.setAttribute('disabled', 'true');
+
+  masterAddBubble('user', trimmed);
+  masterShowTyping();
+
+  const delay = 700 + Math.random() * 600;
+  await new Promise((resolve) => setTimeout(resolve, delay));
+
+  masterHideTyping();
+  masterAddBubble('coach', pickMasterReply(trimmed));
+
+  masterChat.thinking = false;
+  masterChat.sendBtn?.removeAttribute('disabled');
+}
+
+function initMasterAI() {
+  if (masterChat.initialized) return;
+  masterChat.form = document.getElementById('masterForm');
+  masterChat.input = document.getElementById('masterInput');
+  masterChat.thread = document.getElementById('masterThread');
+  masterChat.sendBtn = document.getElementById('masterSend');
+  if (!masterChat.form || !masterChat.input || !masterChat.thread) return;
+
+  masterChat.form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const value = masterChat.input.value;
+    masterChat.input.value = '';
+    masterAutoResize();
+    masterSend(value);
+  });
+
+  masterChat.input.addEventListener('input', masterAutoResize);
+  masterChat.input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      masterChat.form.requestSubmit();
+    }
+  });
+
+  $$('.master-prompt').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const key = chip.dataset.promptKey;
+      const text = key ? t(key, chip.textContent.trim()) : chip.textContent.trim();
+      masterSend(text);
+    });
+  });
+
+  masterChat.initialized = true;
+}
+
+// ===========================================================================
 // Service worker registration
 // ===========================================================================
 function registerSW() {
@@ -876,6 +1033,9 @@ async function boot() {
 
   // Settings
   bindSettings();
+
+  // Master AI (frontend-only demo chat)
+  initMasterAI();
 
   // Tabs
   bindTabs();

@@ -4,6 +4,7 @@
   "tab_binaural": "Binaural",
   "tab_audios": "Audios",
   "tab_courses": "Courses",
+  "tab_master_ai": "Master AI",
   "tab_community": "Community",
   "tab_settings": "Settings",
 
@@ -99,6 +100,68 @@
   "courses_launch_date": "Launch",
   "courses_launch_cta": "Notify me",
   "courses_disclaimer": "Preview — we'll soon connect this section with your real courses.",
+
+  "master_title": "Master AI",
+  "master_sub": "Your master coach to reprogram your mindset.",
+  "master_hero_eyebrow": "Your master coach",
+  "master_hero_title_1": "Master",
+  "master_hero_title_2": "AI",
+  "master_hero_sub": "Ask me anything about mindset, abundance, habits or manifestation.",
+  "master_online": "Online · Instant replies",
+  "master_stat_responses": "queries",
+  "master_stat_users": "active users",
+  "master_stat_rating": "rating",
+  "master_prompts_title": "Try these prompts",
+  "master_prompts_sub": "Tap to ask",
+  "master_prompt_1": "How do I attract abundance?",
+  "master_prompt_2": "Help me with my fears",
+  "master_prompt_3": "Habits for success",
+  "master_prompt_4": "Guided meditation",
+  "master_prompt_5": "Affirmations for today",
+  "master_chat_title": "Conversation",
+  "master_chat_sub": "Just you and Master AI",
+  "master_welcome": "Welcome. I'm Master AI, your personal coach. What would you like to work on today? You can type to me or tap one of the topics above.",
+  "master_placeholder": "Type your message…",
+  "master_send": "Send",
+  "master_typing": "Master AI is typing",
+  "master_disclaimer": "Simulated replies for demo — we'll soon connect to the real Master AI.",
+  "master_reply_abundance": [
+    "Abundance begins when you choose to see yourself as someone who deserves to thrive. Write down three reasons why you deserve it today.",
+    "Money is energy and follows your inner frequency. Visualize for 2 minutes how it feels to already have exactly what you want.",
+    "Every time you say 'I can't afford it', replace it with 'how can I generate it?'. That shift rewires your millionaire mind."
+  ],
+  "master_reply_fear": [
+    "Fear is a signal, not a wall. Name it out loud and ask: what is it trying to protect? Then take one small step anyway.",
+    "Breathe 4 seconds in, 6 seconds out for a full minute. Fear dissolves when we lower the body's frequency.",
+    "Your fears are not truths, they are programs. Choose a new belief today and repeat it three times before sleep."
+  ],
+  "master_reply_habits": [
+    "Discipline beats motivation. Pick ONE habit and do it for 7 days at the same time. The rest will follow.",
+    "Your habits are the bricks of your identity. Ask yourself: what would the millionaire version of me do today?",
+    "Stack a new habit onto an existing one (e.g. after coffee, 5 min of journaling). Your brain won't resist it."
+  ],
+  "master_reply_manifest": [
+    "Manifesting isn't wishing, it's aligning. Feel as if you already received it, and act from that certainty.",
+    "Write your desire in the present tense, thank it as if it's already done, and release the how. Life handles the path.",
+    "Visualize your goal for 5 minutes a day with all your senses: what you see, hear, smell, and how your body feels."
+  ],
+  "master_reply_meditate": [
+    "Close your eyes now. Inhale 4 seconds, hold 4, exhale 6. Do this 10 times. Your heart coherence shifts your reality.",
+    "Meditating isn't stopping thoughts, it's not believing every one. Watch them pass like clouds for 5 minutes.",
+    "Before sleep, place your hand on your chest and repeat: 'I am safe. I am at peace. All is well'."
+  ],
+  "master_reply_affirm": [
+    "Affirmation for today: 'I am a magnet for abundance. Money flows easily and joyfully into my life'. Repeat 10 times in the mirror.",
+    "'I am the millionaire version of myself. My decisions today build my financial freedom'.",
+    "An affirmation without emotion is just noise. Smile while saying it and your subconscious absorbs it."
+  ],
+  "master_reply_default": [
+    "Great reflection. Tell me a bit more — what emotion comes up when you think about it?",
+    "Take a deep breath before answering: what version of yourself gets activated by this question?",
+    "I'm curious. Is this something you've felt for a while or did it just appear?",
+    "Notice what you feel in your body right now. The body always gives the first answer.",
+    "Remember: there are no wrong answers. Trust your intuition and keep writing to me."
+  ],
 
   "community_title": "Community",
   "community_sub": "Connect with minds that are resetting their lives.",

@@ -4,6 +4,7 @@
   "tab_binaural": "Binaural",
   "tab_audios": "Audios",
   "tab_courses": "Cursos",
+  "tab_master_ai": "Master AI",
   "tab_community": "Comunidad",
   "tab_settings": "Ajustes",
 
@@ -99,6 +100,68 @@
   "courses_launch_date": "Lanzamiento",
   "courses_launch_cta": "Avisarme",
   "courses_disclaimer": "Vista previa — próximamente conectaremos esta sección con tus cursos reales.",
+
+  "master_title": "Master AI",
+  "master_sub": "Tu coach maestro para reprogramar tu mindset.",
+  "master_hero_eyebrow": "Tu coach maestro",
+  "master_hero_title_1": "Master",
+  "master_hero_title_2": "AI",
+  "master_hero_sub": "Hazme cualquier pregunta sobre mindset, abundancia, hábitos o manifestación.",
+  "master_online": "En línea · Responde al instante",
+  "master_stat_responses": "consultas",
+  "master_stat_users": "usuarios activos",
+  "master_stat_rating": "rating",
+  "master_prompts_title": "Prueba estas preguntas",
+  "master_prompts_sub": "Toca para preguntar",
+  "master_prompt_1": "¿Cómo atraigo abundancia?",
+  "master_prompt_2": "Ayúdame con mis miedos",
+  "master_prompt_3": "Hábitos de éxito",
+  "master_prompt_4": "Meditación guiada",
+  "master_prompt_5": "Afirmaciones para hoy",
+  "master_chat_title": "Conversación",
+  "master_chat_sub": "Solo tú y Master AI",
+  "master_welcome": "Bienvenido. Soy Master AI, tu coach personal. ¿En qué quieres trabajar hoy? Puedes escribirme o tocar uno de los temas de arriba.",
+  "master_placeholder": "Escribe tu mensaje…",
+  "master_send": "Enviar",
+  "master_typing": "Master AI está escribiendo",
+  "master_disclaimer": "Respuestas simuladas para demostración — próximamente conectaremos con Master AI real.",
+  "master_reply_abundance": [
+    "La abundancia empieza cuando eliges verte como alguien que merece prosperar. Escribe hoy tres razones por las que mereces atraerla.",
+    "El dinero es energía y sigue tu frecuencia interna. Visualiza durante 2 minutos cómo se siente tener exactamente lo que deseas.",
+    "Cada vez que digas 'no puedo pagarlo', reemplázalo con '¿cómo puedo generarlo?'. Ese cambio reprograma tu mente millonaria."
+  ],
+  "master_reply_fear": [
+    "El miedo es una señal, no una pared. Nómbralo en voz alta y pregúntate: ¿qué quiere protegerme? Luego da un paso pequeño pese a él.",
+    "Respira 4 segundos in, 6 segundos out durante un minuto. El miedo se disuelve cuando bajamos la frecuencia del cuerpo.",
+    "Tus miedos no son verdades, son programaciones. Elige una creencia nueva hoy y repítela tres veces antes de dormir."
+  ],
+  "master_reply_habits": [
+    "La disciplina supera a la motivación. Elige UN solo hábito y hazlo durante 7 días a la misma hora. El resto vendrá después.",
+    "Tus hábitos son los ladrillos de tu identidad. Pregúntate: ¿qué haría hoy la versión millonaria de mí mismo?",
+    "Apila un hábito nuevo sobre uno ya establecido (ej. después del café, 5 min de journaling). Así tu cerebro no lo resiste."
+  ],
+  "master_reply_manifest": [
+    "Manifestar no es desear, es alinear. Siente como si ya hubieras recibido aquello que quieres, y actúa desde esa certeza.",
+    "Escribe tu deseo en presente, agradécelo como si ya estuviera cumplido, y suelta el cómo. La vida se encarga del camino.",
+    "Visualiza 5 minutos al día tu meta con todos los sentidos: qué ves, qué oyes, qué hueles, cómo se siente tu cuerpo."
+  ],
+  "master_reply_meditate": [
+    "Cierra los ojos ahora. Inhala 4 segundos, sostén 4, exhala 6. Haz esto 10 veces. Tu coherencia cardíaca cambia tu realidad.",
+    "Meditar no es dejar de pensar, es dejar de creer cada pensamiento. Obsérvalos pasar como nubes durante 5 minutos.",
+    "Antes de dormir, coloca la mano en el pecho y repite: 'Estoy seguro. Estoy en paz. Todo está bien'."
+  ],
+  "master_reply_affirm": [
+    "Afirmación para hoy: 'Soy un imán para la abundancia. El dinero llega fácil y con alegría a mi vida'. Repítela 10 veces frente al espejo.",
+    "'Yo soy la versión millonaria de mí mismo. Mis decisiones de hoy construyen mi libertad financiera'.",
+    "Una afirmación sin emoción es solo ruido. Sonríe mientras la dices y tu subconsciente la absorbe."
+  ],
+  "master_reply_default": [
+    "Gran reflexión. Cuéntame un poco más sobre eso — ¿qué emoción aparece cuando lo piensas?",
+    "Respira profundo antes de responder: ¿qué versión de ti mismo se activa con esta pregunta?",
+    "Me interesa. ¿Esto es algo que sientes desde hace tiempo o apareció recientemente?",
+    "Toma nota de lo que sientes ahora en el cuerpo. El cuerpo siempre tiene la primera respuesta.",
+    "Recuerda: no hay respuestas incorrectas. Confía en tu intuición y sigue escribiéndome."
+  ],
 
   "community_title": "Comunidad",
   "community_sub": "Conecta con mentes que están reseteando su vida.",
