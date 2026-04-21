@@ -129,6 +129,320 @@
         <ul class="track-list" id="trackList"></ul>
       </section>
 
+      <!-- ========== COURSES TAB ========== -->
+      <section class="view view--courses" id="view-courses" role="tabpanel" aria-labelledby="tab-courses" hidden>
+        <div class="section-head">
+          <h2 data-i18n="courses_title">Cursos</h2>
+          <p class="muted" data-i18n="courses_sub">Aprende a reprogramar tu mente para la abundancia.</p>
+        </div>
+
+        <!-- Hero / progress summary -->
+        <div class="card card--courses-hero">
+          <div class="courses-hero__top">
+            <span class="courses-hero__eyebrow" data-i18n="courses_eyebrow">Tu academia</span>
+            <h3 class="courses-hero__title">
+              <span data-i18n="courses_hero_title_1">Cursos</span>
+              <span data-i18n="courses_hero_title_2">Reset</span>
+            </h3>
+            <p class="muted" data-i18n="courses_hero_sub">
+              Rutas de formación diseñadas por mentores para acelerar tu reset mental y financiero.
+            </p>
+          </div>
+          <div class="courses-stats">
+            <div class="stat">
+              <strong>3</strong>
+              <span class="muted small" data-i18n="courses_stat_active">en curso</span>
+            </div>
+            <div class="stat">
+              <strong>7</strong>
+              <span class="muted small" data-i18n="courses_stat_done">completados</span>
+            </div>
+            <div class="stat">
+              <strong>12</strong>
+              <span class="muted small" data-i18n="courses_stat_streak">días de racha</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Continue watching -->
+        <div class="community-block">
+          <div class="community-block__head">
+            <h3 data-i18n="courses_continue_title">Continuar viendo</h3>
+            <span class="muted small" data-i18n="courses_continue_sub">Retoma donde lo dejaste</span>
+          </div>
+
+          <div class="card course-continue">
+            <div class="course-thumb course-thumb--gold">
+              <span class="course-thumb__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </span>
+              <span class="level-badge level-badge--mid" data-i18n="courses_level_intermediate">Intermedio</span>
+            </div>
+            <div class="course-continue__body">
+              <h4 class="course-continue__title" data-i18n="courses_continue_course">Mindset Millonario 1.0</h4>
+              <p class="muted small">
+                <span data-i18n="courses_lesson">Clase</span> 4 <span data-i18n="courses_of">de</span> 12 —
+                <span data-i18n="courses_continue_lesson">Creencias limitantes</span>
+              </p>
+              <div class="progress"><div class="progress__bar" style="width: 34%"></div></div>
+              <div class="course-continue__meta">
+                <span class="muted small"><strong>34%</strong></span>
+                <span class="muted small">42 min <span data-i18n="courses_remaining">restantes</span></span>
+              </div>
+              <button class="btn btn--primary btn--block" type="button">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                <span data-i18n="courses_continue_cta">Continuar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories horizontal scroll -->
+        <div class="community-block">
+          <div class="community-block__head">
+            <h3 data-i18n="courses_categories_title">Categorías</h3>
+            <span class="muted small" data-i18n="courses_categories_sub">Explora por tema</span>
+          </div>
+
+          <div class="category-scroll" role="tablist" aria-label="Categorías">
+            <button class="category-chip is-active" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3zM9 20h6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-i18n="courses_cat_mindset">Mindset</span>
+            </button>
+            <button class="category-chip" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M14 7h7v7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-i18n="courses_cat_investing">Inversión</span>
+            </button>
+            <button class="category-chip" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2 8 12.7 4 8.8 9.5 8 12 3z" fill="currentColor"/></svg>
+              <span data-i18n="courses_cat_manifest">Manifestación</span>
+            </button>
+            <button class="category-chip" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+              <span data-i18n="courses_cat_habits">Hábitos</span>
+            </button>
+            <button class="category-chip" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 20l6-16 4 10 3-6 3 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-i18n="courses_cat_leadership">Liderazgo</span>
+            </button>
+            <button class="category-chip" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-i18n="courses_cat_abundance">Abundancia</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Featured courses -->
+        <div class="community-block">
+          <div class="community-block__head">
+            <h3 data-i18n="courses_featured_title">Cursos destacados</h3>
+            <button class="chip chip--ghost" type="button" data-i18n="courses_featured_all">Ver todos</button>
+          </div>
+
+          <ul class="course-list">
+            <li class="course-card">
+              <div class="course-thumb course-thumb--gold">
+                <span class="course-thumb__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M9 20h6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+                </span>
+              </div>
+              <div class="course-card__body">
+                <div class="course-card__head">
+                  <span class="level-badge level-badge--mid" data-i18n="courses_level_intermediate">Intermedio</span>
+                  <span class="course-rating" aria-label="4.9 estrellas">
+                    <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2 8 12.7 4 8.8 9.5 8 12 3z" fill="currentColor"/></svg>
+                    4.9
+                  </span>
+                </div>
+                <h4 class="course-card__title" data-i18n="courses_featured_1_title">Mindset Millonario 1.0</h4>
+                <p class="course-card__instructor">
+                  <span class="community-avatar community-avatar--xs" style="background: linear-gradient(135deg,#f6d365,#fda085)">PD</span>
+                  <span class="muted small">Paola Díaz</span>
+                </p>
+                <div class="course-card__meta">
+                  <span class="chip">12 <span data-i18n="courses_lessons">clases</span></span>
+                  <span class="chip">4.5h</span>
+                </div>
+              </div>
+              <button class="btn btn--ghost btn--small course-card__cta" type="button" data-i18n="courses_enroll">Inscribirme</button>
+            </li>
+
+            <li class="course-card">
+              <div class="course-thumb course-thumb--green">
+                <span class="course-thumb__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 17l6-6 4 4 8-8M14 7h7v7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+              <div class="course-card__body">
+                <div class="course-card__head">
+                  <span class="level-badge level-badge--basic" data-i18n="courses_level_basic">Básico</span>
+                  <span class="course-rating">
+                    <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2 8 12.7 4 8.8 9.5 8 12 3z" fill="currentColor"/></svg>
+                    4.8
+                  </span>
+                </div>
+                <h4 class="course-card__title" data-i18n="courses_featured_2_title">Reset Financiero</h4>
+                <p class="course-card__instructor">
+                  <span class="community-avatar community-avatar--xs" style="background: linear-gradient(135deg,#84fab0,#8fd3f4)">LR</span>
+                  <span class="muted small">Luis Ramírez</span>
+                </p>
+                <div class="course-card__meta">
+                  <span class="chip">8 <span data-i18n="courses_lessons">clases</span></span>
+                  <span class="chip">3h</span>
+                </div>
+              </div>
+              <button class="btn btn--ghost btn--small course-card__cta" type="button" data-i18n="courses_enroll">Inscribirme</button>
+            </li>
+
+            <li class="course-card">
+              <div class="course-thumb course-thumb--violet">
+                <span class="course-thumb__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2 8 12.7 4 8.8 9.5 8 12 3z" fill="currentColor"/></svg>
+                </span>
+              </div>
+              <div class="course-card__body">
+                <div class="course-card__head">
+                  <span class="level-badge level-badge--adv" data-i18n="courses_level_advanced">Avanzado</span>
+                  <span class="course-rating">
+                    <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2 8 12.7 4 8.8 9.5 8 12 3z" fill="currentColor"/></svg>
+                    5.0
+                  </span>
+                </div>
+                <h4 class="course-card__title" data-i18n="courses_featured_3_title">Manifestación Consciente</h4>
+                <p class="course-card__instructor">
+                  <span class="community-avatar community-avatar--xs" style="background: linear-gradient(135deg,#a1c4fd,#c2e9fb)">JS</span>
+                  <span class="muted small">Julia Soto</span>
+                </p>
+                <div class="course-card__meta">
+                  <span class="chip">16 <span data-i18n="courses_lessons">clases</span></span>
+                  <span class="chip">6.5h</span>
+                </div>
+              </div>
+              <button class="btn btn--ghost btn--small course-card__cta" type="button" data-i18n="courses_enroll">Inscribirme</button>
+            </li>
+
+            <li class="course-card">
+              <div class="course-thumb course-thumb--pink">
+                <span class="course-thumb__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+                </span>
+              </div>
+              <div class="course-card__body">
+                <div class="course-card__head">
+                  <span class="level-badge level-badge--basic" data-i18n="courses_level_basic">Básico</span>
+                  <span class="course-rating">
+                    <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2 8 12.7 4 8.8 9.5 8 12 3z" fill="currentColor"/></svg>
+                    4.7
+                  </span>
+                </div>
+                <h4 class="course-card__title" data-i18n="courses_featured_4_title">Hábitos de los Ricos</h4>
+                <p class="course-card__instructor">
+                  <span class="community-avatar community-avatar--xs" style="background: linear-gradient(135deg,#fbc2eb,#a6c1ee)">MP</span>
+                  <span class="muted small">Marco Paredes</span>
+                </p>
+                <div class="course-card__meta">
+                  <span class="chip">10 <span data-i18n="courses_lessons">clases</span></span>
+                  <span class="chip">3.5h</span>
+                </div>
+              </div>
+              <button class="btn btn--ghost btn--small course-card__cta" type="button" data-i18n="courses_enroll">Inscribirme</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Learning path -->
+        <div class="community-block">
+          <div class="community-block__head">
+            <h3 data-i18n="courses_path_title">Ruta recomendada</h3>
+            <span class="muted small" data-i18n="courses_path_sub">Reset mental completo</span>
+          </div>
+
+          <div class="card card--path">
+            <div class="path-head">
+              <div class="progress-ring" aria-hidden="true">
+                <svg viewBox="0 0 44 44" width="44" height="44">
+                  <circle cx="22" cy="22" r="18" stroke="rgba(255,255,255,0.1)" stroke-width="4" fill="none"/>
+                  <circle cx="22" cy="22" r="18" stroke="url(#pathGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="67.8" transform="rotate(-90 22 22)"/>
+                  <defs>
+                    <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#e8c676"/>
+                      <stop offset="100%" stop-color="#d4a84b"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span class="progress-ring__label">2/5</span>
+              </div>
+              <div class="path-head__text">
+                <h4 data-i18n="courses_path_name">Camino del Millonario</h4>
+                <p class="muted small"><span data-i18n="courses_path_progress">2 de 5 cursos completados</span></p>
+              </div>
+            </div>
+
+            <ol class="learning-path">
+              <li class="path-step is-done">
+                <span class="path-step__dot">
+                  <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <div class="path-step__body">
+                  <strong data-i18n="courses_path_step_1">1. Fundamentos del Reset</strong>
+                  <span class="muted small"><span data-i18n="courses_status_done">Completado</span> · 8 <span data-i18n="courses_lessons">clases</span></span>
+                </div>
+              </li>
+              <li class="path-step is-done">
+                <span class="path-step__dot">
+                  <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <div class="path-step__body">
+                  <strong data-i18n="courses_path_step_2">2. Creencias y Dinero</strong>
+                  <span class="muted small"><span data-i18n="courses_status_done">Completado</span> · 10 <span data-i18n="courses_lessons">clases</span></span>
+                </div>
+              </li>
+              <li class="path-step is-current">
+                <span class="path-step__dot">
+                  <svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                </span>
+                <div class="path-step__body">
+                  <strong data-i18n="courses_path_step_3">3. Mindset Millonario 1.0</strong>
+                  <span class="muted small"><span data-i18n="courses_status_current">En curso</span> · 34%</span>
+                </div>
+              </li>
+              <li class="path-step is-locked">
+                <span class="path-step__dot">
+                  <svg viewBox="0 0 24 24" width="12" height="12"><path d="M7 10V8a5 5 0 0 1 10 0v2M5 10h14v10H5z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+                </span>
+                <div class="path-step__body">
+                  <strong data-i18n="courses_path_step_4">4. Inversión Consciente</strong>
+                  <span class="muted small"><span data-i18n="courses_status_locked">Bloqueado</span> · 12 <span data-i18n="courses_lessons">clases</span></span>
+                </div>
+              </li>
+              <li class="path-step is-locked">
+                <span class="path-step__dot">
+                  <svg viewBox="0 0 24 24" width="12" height="12"><path d="M7 10V8a5 5 0 0 1 10 0v2M5 10h14v10H5z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+                </span>
+                <div class="path-step__body">
+                  <strong data-i18n="courses_path_step_5">5. Legado y Abundancia</strong>
+                  <span class="muted small"><span data-i18n="courses_status_locked">Bloqueado</span> · 14 <span data-i18n="courses_lessons">clases</span></span>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Upcoming launch -->
+        <div class="card card--launch">
+          <span class="chip chip--gold" data-i18n="courses_soon">Próximamente</span>
+          <div class="launch__body">
+            <h3 class="launch__title" data-i18n="courses_launch_title">Inversiones para el Alma</h3>
+            <p class="muted small"><span data-i18n="courses_launch_date">Lanzamiento</span> · 15 Jun</p>
+          </div>
+          <button class="btn btn--ghost btn--small" type="button" data-i18n="courses_launch_cta">Avisarme</button>
+        </div>
+
+        <p class="community-disclaimer muted small" data-i18n="courses_disclaimer">
+          Vista previa — próximamente conectaremos esta sección con tus cursos reales.
+        </p>
+      </section>
+
       <!-- ========== COMMUNITY TAB ========== -->
       <section class="view view--community" id="view-community" role="tabpanel" aria-labelledby="tab-community" hidden>
         <div class="section-head">
@@ -433,6 +747,14 @@
           <path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2v-2zm16 0a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
         </svg>
         <span data-i18n="tab_audios">Audios</span>
+      </button>
+      <button class="tab" id="tab-courses" role="tab" aria-controls="view-courses" aria-selected="false" data-view="courses" type="button">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M2 9l10-5 10 5-10 5L2 9z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+          <path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M22 9v5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span data-i18n="tab_courses">Cursos</span>
       </button>
       <button class="tab" id="tab-community" role="tab" aria-controls="view-community" aria-selected="false" data-view="community" type="button">
         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
