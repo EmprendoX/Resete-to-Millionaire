@@ -67,6 +67,7 @@ function cacheDom() {
   els.views = {
     binaural: $('#view-binaural'),
     audios: $('#view-audios'),
+    community: $('#view-community'),
     settings: $('#view-settings')
   };
 

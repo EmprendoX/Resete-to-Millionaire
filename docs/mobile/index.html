@@ -129,6 +129,251 @@
         <ul class="track-list" id="trackList"></ul>
       </section>
 
+      <!-- ========== COMMUNITY TAB ========== -->
+      <section class="view view--community" id="view-community" role="tabpanel" aria-labelledby="tab-community" hidden>
+        <div class="section-head">
+          <h2 data-i18n="community_title">Comunidad</h2>
+          <p class="muted" data-i18n="community_sub">Conecta con mentes que están reseteando su vida.</p>
+        </div>
+
+        <!-- Hero -->
+        <div class="card card--community-hero">
+          <div class="community-hero__top">
+            <span class="community-hero__eyebrow" data-i18n="community_eyebrow">Reset to Millionaire Club</span>
+            <h3 class="community-hero__title">
+              <span data-i18n="community_hero_title_1">Tu tribu</span>
+              <span data-i18n="community_hero_title_2">millonaria</span>
+            </h3>
+            <p class="muted" data-i18n="community_hero_sub">
+              Comparte avances, retos y manifestaciones con miles de personas en el mismo camino.
+            </p>
+          </div>
+          <div class="community-hero__bottom">
+            <div class="community-avatars" aria-hidden="true">
+              <span class="community-avatar" style="background: linear-gradient(135deg,#f6d365,#fda085)">AM</span>
+              <span class="community-avatar" style="background: linear-gradient(135deg,#84fab0,#8fd3f4)">LR</span>
+              <span class="community-avatar" style="background: linear-gradient(135deg,#a1c4fd,#c2e9fb)">JS</span>
+              <span class="community-avatar" style="background: linear-gradient(135deg,#fbc2eb,#a6c1ee)">MP</span>
+              <span class="community-avatar community-avatar--more">+12k</span>
+            </div>
+            <div class="community-hero__meta">
+              <strong>12,480</strong>
+              <span class="muted small" data-i18n="community_active_members">mindsets activos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live event banner -->
+        <div class="card card--live">
+          <div class="live-badge">
+            <span class="live-dot"></span>
+            <span data-i18n="community_live">EN VIVO</span>
+          </div>
+          <div class="live__body">
+            <h3 class="live__title" data-i18n="community_live_title">Masterclass: Reset Financiero</h3>
+            <p class="muted small" data-i18n="community_live_sub">Con Paola Díaz · Hoy, 20:00h</p>
+          </div>
+          <button class="btn btn--primary btn--small" type="button" data-i18n="community_live_cta">Recordarme</button>
+        </div>
+
+        <!-- Active challenges -->
+        <div class="community-block">
+          <div class="community-block__head">
+            <h3 data-i18n="community_challenges_title">Retos activos</h3>
+            <span class="muted small" data-i18n="community_challenges_sub">Esta semana</span>
+          </div>
+
+          <div class="card card--challenge">
+            <div class="challenge__head">
+              <span class="chip chip--gold" data-i18n="community_challenge_featured">Destacado</span>
+              <span class="muted small"><strong>8,214</strong> <span data-i18n="community_participants">participantes</span></span>
+            </div>
+            <h4 class="challenge__title" data-i18n="community_challenge_1_title">Reset 21 días</h4>
+            <p class="muted small" data-i18n="community_challenge_1_sub">Reprograma tu mente financiera en 21 días con audios binaurales y afirmaciones.</p>
+            <div class="challenge__progress">
+              <div class="progress"><div class="progress__bar" style="width: 62%"></div></div>
+              <div class="challenge__progress-meta">
+                <span><strong>13</strong> / 21 <span data-i18n="community_days">días</span></span>
+                <span class="muted small"><span data-i18n="community_remaining">Quedan</span> 8 <span data-i18n="community_days">días</span></span>
+              </div>
+            </div>
+            <button class="btn btn--ghost btn--block" type="button" data-i18n="community_join">Unirme al reto</button>
+          </div>
+
+          <div class="card card--challenge-mini">
+            <div class="challenge-mini__icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2 8 12.7 4 8.8 9.5 8 12 3z" fill="currentColor"/></svg>
+            </div>
+            <div class="challenge-mini__body">
+              <h4 data-i18n="community_challenge_2_title">Manifestación semanal</h4>
+              <p class="muted small" data-i18n="community_challenge_2_sub">Escribe tu intención y comparte tus señales.</p>
+            </div>
+            <span class="chip"><strong>2,147</strong></span>
+          </div>
+        </div>
+
+        <!-- Feed -->
+        <div class="community-block">
+          <div class="community-block__head">
+            <h3 data-i18n="community_feed_title">Feed de la comunidad</h3>
+            <button class="chip chip--ghost" type="button" data-i18n="community_feed_filter">Recientes</button>
+          </div>
+
+          <ul class="community-feed">
+            <li class="post">
+              <span class="community-avatar" style="background: linear-gradient(135deg,#f6d365,#fda085)">AM</span>
+              <div class="post__body">
+                <div class="post__head">
+                  <strong>Ana Morales</strong>
+                  <span class="badge badge--pro" data-i18n="community_badge_pro">Pro</span>
+                  <span class="muted small">· <span data-i18n="community_time_2h">hace 2 h</span></span>
+                </div>
+                <p class="post__text" data-i18n="community_post_1">Día 14 del Reset y ya firmé mi primer cliente del mes. La frecuencia 432 Hz me tiene en otro estado.</p>
+                <div class="post__actions" aria-hidden="true">
+                  <span class="post__action"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 4c0 5.4-7.5 10-7.5 10z" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>248</span>
+                  <span class="post__action"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 6h16v10H8l-4 4V6z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></svg>32</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="post">
+              <span class="community-avatar" style="background: linear-gradient(135deg,#84fab0,#8fd3f4)">LR</span>
+              <div class="post__body">
+                <div class="post__head">
+                  <strong>Luis Ramírez</strong>
+                  <span class="muted small">· <span data-i18n="community_time_5h">hace 5 h</span></span>
+                </div>
+                <p class="post__text" data-i18n="community_post_2">¿Alguien más escucha el programa Abundancia antes de dormir? Llevo 9 días seguidos, los sueños son otro nivel.</p>
+                <div class="post__actions" aria-hidden="true">
+                  <span class="post__action"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 4c0 5.4-7.5 10-7.5 10z" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>184</span>
+                  <span class="post__action"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 6h16v10H8l-4 4V6z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></svg>47</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="post">
+              <span class="community-avatar" style="background: linear-gradient(135deg,#a1c4fd,#c2e9fb)">JS</span>
+              <div class="post__body">
+                <div class="post__head">
+                  <strong>Julia Soto</strong>
+                  <span class="badge badge--pro" data-i18n="community_badge_pro">Pro</span>
+                  <span class="muted small">· <span data-i18n="community_time_yesterday">ayer</span></span>
+                </div>
+                <p class="post__text" data-i18n="community_post_3">Terminé el reto de 21 días 💛 Resultado: triplicé mis ingresos y calma mental. Gracias comunidad.</p>
+                <div class="post__actions" aria-hidden="true">
+                  <span class="post__action"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 4c0 5.4-7.5 10-7.5 10z" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>1.2k</span>
+                  <span class="post__action"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 6h16v10H8l-4 4V6z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></svg>126</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="post">
+              <span class="community-avatar" style="background: linear-gradient(135deg,#fbc2eb,#a6c1ee)">MP</span>
+              <div class="post__body">
+                <div class="post__head">
+                  <strong>Marco Paredes</strong>
+                  <span class="muted small">· <span data-i18n="community_time_2d">hace 2 d</span></span>
+                </div>
+                <p class="post__text" data-i18n="community_post_4">Tip: usen audífonos de cable para el binaural. El bluetooth cambia el delay entre canales.</p>
+                <div class="post__actions" aria-hidden="true">
+                  <span class="post__action"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 4c0 5.4-7.5 10-7.5 10z" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>412</span>
+                  <span class="post__action"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 6h16v10H8l-4 4V6z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></svg>89</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Circles -->
+        <div class="community-block">
+          <div class="community-block__head">
+            <h3 data-i18n="community_circles_title">Círculos</h3>
+            <span class="muted small" data-i18n="community_circles_sub">Encuentra tu tribu</span>
+          </div>
+          <div class="circles-grid">
+            <button class="circle-card" type="button">
+              <span class="circle-card__icon">
+                <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h7v7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="circle-card__name" data-i18n="community_circle_1">Inversionistas</span>
+              <span class="circle-card__meta"><strong>3.2k</strong> <span data-i18n="community_members">miembros</span></span>
+            </button>
+            <button class="circle-card" type="button">
+              <span class="circle-card__icon">
+                <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 3l9 4-9 4-9-4 9-4zM3 12l9 4 9-4M3 17l9 4 9-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+              </span>
+              <span class="circle-card__name" data-i18n="community_circle_2">Emprendedores</span>
+              <span class="circle-card__meta"><strong>4.8k</strong> <span data-i18n="community_members">miembros</span></span>
+            </button>
+            <button class="circle-card" type="button">
+              <span class="circle-card__icon">
+                <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 3a6 6 0 0 0-6 6c0 3 2 5 2 7v2h8v-2c0-2 2-4 2-7a6 6 0 0 0-6-6zM9 20h6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="circle-card__name" data-i18n="community_circle_3">Mente Plena</span>
+              <span class="circle-card__meta"><strong>2.1k</strong> <span data-i18n="community_members">miembros</span></span>
+            </button>
+            <button class="circle-card" type="button">
+              <span class="circle-card__icon">
+                <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+              </span>
+              <span class="circle-card__name" data-i18n="community_circle_4">Disciplina 5am</span>
+              <span class="circle-card__meta"><strong>1.9k</strong> <span data-i18n="community_members">miembros</span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="community-block">
+          <div class="community-block__head">
+            <h3 data-i18n="community_leaderboard_title">Top de la semana</h3>
+            <span class="muted small" data-i18n="community_leaderboard_sub">Mayor racha de días</span>
+          </div>
+
+          <ol class="leaderboard">
+            <li class="leaderboard__row">
+              <span class="medal medal--1">1</span>
+              <span class="community-avatar" style="background: linear-gradient(135deg,#f6d365,#fda085)">AM</span>
+              <div class="leaderboard__info">
+                <strong>Ana Morales</strong>
+                <span class="muted small"><span data-i18n="community_streak">Racha</span>: 42 <span data-i18n="community_days">días</span></span>
+              </div>
+              <span class="chip chip--gold">+820</span>
+            </li>
+            <li class="leaderboard__row">
+              <span class="medal medal--2">2</span>
+              <span class="community-avatar" style="background: linear-gradient(135deg,#a1c4fd,#c2e9fb)">JS</span>
+              <div class="leaderboard__info">
+                <strong>Julia Soto</strong>
+                <span class="muted small"><span data-i18n="community_streak">Racha</span>: 38 <span data-i18n="community_days">días</span></span>
+              </div>
+              <span class="chip">+760</span>
+            </li>
+            <li class="leaderboard__row">
+              <span class="medal medal--3">3</span>
+              <span class="community-avatar" style="background: linear-gradient(135deg,#84fab0,#8fd3f4)">LR</span>
+              <div class="leaderboard__info">
+                <strong>Luis Ramírez</strong>
+                <span class="muted small"><span data-i18n="community_streak">Racha</span>: 31 <span data-i18n="community_days">días</span></span>
+              </div>
+              <span class="chip">+610</span>
+            </li>
+            <li class="leaderboard__row">
+              <span class="medal">4</span>
+              <span class="community-avatar" style="background: linear-gradient(135deg,#fbc2eb,#a6c1ee)">MP</span>
+              <div class="leaderboard__info">
+                <strong>Marco Paredes</strong>
+                <span class="muted small"><span data-i18n="community_streak">Racha</span>: 27 <span data-i18n="community_days">días</span></span>
+              </div>
+              <span class="chip">+540</span>
+            </li>
+          </ol>
+        </div>
+
+        <p class="community-disclaimer muted small" data-i18n="community_disclaimer">
+          Vista previa — próximamente conectaremos esta sección con perfiles y contenido en vivo.
+        </p>
+      </section>
+
       <!-- ========== SETTINGS TAB ========== -->
       <section class="view view--settings" id="view-settings" role="tabpanel" aria-labelledby="tab-settings" hidden>
         <div class="section-head">
@@ -188,6 +433,15 @@
           <path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2v-2zm16 0a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
         </svg>
         <span data-i18n="tab_audios">Audios</span>
+      </button>
+      <button class="tab" id="tab-community" role="tab" aria-controls="view-community" aria-selected="false" data-view="community" type="button">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none"/>
+          <circle cx="17" cy="9" r="2.6" stroke="currentColor" stroke-width="1.8" fill="none"/>
+          <path d="M3 19c0-3 3-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M15 19c0-2 2-3.5 4-3.5S21 17 21 19" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span data-i18n="tab_community">Comunidad</span>
       </button>
       <button class="tab" id="tab-settings" role="tab" aria-controls="view-settings" aria-selected="false" data-view="settings" type="button">
         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
