@@ -1,4 +1,4 @@
-/* Reset to Millionaire — Mobile PWA service worker */
+/* THE RESETE ORDER — Mobile PWA service worker */
 const CACHE_VERSION = 'r2m-mobile-v1';
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const AUDIO_CACHE = `${CACHE_VERSION}-audio`;

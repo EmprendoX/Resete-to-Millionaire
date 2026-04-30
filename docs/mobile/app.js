@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Reset to Millionaire — Mobile PWA
+   THE RESETE ORDER — Mobile PWA
    Entry point. No Electron, no subliminal flashes. Just binaural + audios.
    ========================================================================== */
 

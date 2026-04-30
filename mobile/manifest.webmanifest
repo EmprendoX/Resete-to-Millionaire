@@ -1,14 +1,14 @@
 {
-  "name": "Reset to Millionaire",
-  "short_name": "R2M",
-  "description": "Sesiones binaurales y audios de afirmaciones para tu mindset.",
+  "name": "THE RESETE ORDER",
+  "short_name": "RESETE",
+  "description": "THE RESETE ORDER — sesiones binaurales y audios de afirmaciones para tu mindset.",
   "lang": "es",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0b0d12",
-  "theme_color": "#0b0d12",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "categories": ["health", "lifestyle", "productivity"],
   "icons": [
     {
