@@ -16,7 +16,7 @@ const SHELL_URLS = [
   'icons/icon-512.png',
   '../src/binauralPrograms.js',
   '../src/binauralAudioEngine.js',
-  'icons/Logo_The_Resete_Order.png'
+  'icons/Logot_Reset_Order.png'
 ];
 
 self.addEventListener('install', (event) => {
