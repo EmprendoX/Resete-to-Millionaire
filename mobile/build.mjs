@@ -4,7 +4,7 @@
  * Produces a self-contained, deployable folder at docs/mobile/ that can be
  * served directly by Netlify (which publishes docs/) or any static host.
  *
- * It copies mobile/ + its JS/audio/logo dependencies and rewrites the
+ * It copies mobile/ + its JS/audio dependencies and rewrites the
  * "../src/" and "../assets/" relative paths into local "./src/" / "./assets/"
  * paths so the bundle works from any mount point.
  */
@@ -43,10 +43,6 @@ async function run() {
   // 3) Copy assets (logo + MP3s) (was ../assets/)
   const assetsOut = join(OUT, 'assets');
   await mkdir(join(assetsOut, 'audio'), { recursive: true });
-  await cp(
-    join(ROOT, 'assets', 'Logo_Resete_To_Millionaire.png'),
-    join(assetsOut, 'Logo_Resete_To_Millionaire.png')
-  );
   await cp(join(ROOT, 'assets', 'audio'), join(assetsOut, 'audio'), {
     recursive: true
   });

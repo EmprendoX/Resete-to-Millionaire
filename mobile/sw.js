@@ -1,5 +1,5 @@
 /* THE RESETE ORDER — Mobile PWA service worker */
-const CACHE_VERSION = 'r2m-mobile-v1';
+const CACHE_VERSION = 'r2m-mobile-v2';
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const AUDIO_CACHE = `${CACHE_VERSION}-audio`;
 
@@ -16,7 +16,7 @@ const SHELL_URLS = [
   'icons/icon-512.png',
   '../src/binauralPrograms.js',
   '../src/binauralAudioEngine.js',
-  '../assets/Logo_Resete_To_Millionaire.png'
+  'icons/Logo_The_Resete_Order.png'
 ];
 
 self.addEventListener('install', (event) => {
