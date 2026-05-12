@@ -268,9 +268,16 @@ function setActiveView(name) {
   window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
 }
 
+const COURSES_EXTERNAL_URL = 'https://reset-edu.netlify.app';
+
 function bindTabs() {
   els.tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
+    tab.addEventListener('click', (event) => {
+      if (tab.dataset.view === 'courses') {
+        event.preventDefault();
+        window.open(COURSES_EXTERNAL_URL, '_blank', 'noopener,noreferrer');
+        return;
+      }
       setActiveView(tab.dataset.view);
     });
   });
